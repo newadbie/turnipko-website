@@ -5,6 +5,7 @@ import { FluidObject } from 'gatsby-image'
 
 import './header.css'
 import { Container } from '@material-ui/core'
+import SlideButton from '../common/slideButton'
 
 interface Props {
   fluidObject: FluidObject
@@ -20,9 +21,7 @@ const Header: FC<Props> = ({ fluidObject }) => {
             <h1 className="Header--title">Turnipko</h1>
             <h2 className="Header--subtitle">Beautiful pictures of your baby</h2>
           </div>
-          <button className="Header--button">
-            <span>Contact me!</span>
-          </button>
+          <SlideButton text="Contact me" />
         </div>
       </Container>
     </header>

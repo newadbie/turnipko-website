@@ -47,30 +47,3 @@
   line-height: 20px;
   font-weight: normal;
 }
-
-.Header--button {
-  text-transform: uppercase;
-  font-weight: normal;
-  border: 1px solid #222;
-  box-sizing: border-box;
-  background-color: transparent;
-  padding: 10px 15px;
-  cursor: pointer;
-  position: relative;
-  outline: none;
-}
-
-.Header--button::after {
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.1);
-  transition: all 0.35s;
-}
-
-.Header--button:hover::after {
-  width: 100%;
-}
