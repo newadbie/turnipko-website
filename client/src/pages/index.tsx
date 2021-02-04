@@ -4,12 +4,14 @@ import { Link, PageProps, graphql } from 'gatsby'
 import IndexLayout from '../layouts'
 import { Container } from '@material-ui/core'
 import Header from '../components/header/header'
+import Latest from '../components/latest/latest'
 
 const IndexPage: FC<PageProps> = ({ data }: any) => {
   console.log(data)
   return (
     <IndexLayout>
       <Header fluidObject={data.placeholderImage.childImageSharp.fluid} />
+      <Latest />
       <Container>
         <h1>Hi people</h1>
         <p>Welcome to your new Gatsby site.</p>

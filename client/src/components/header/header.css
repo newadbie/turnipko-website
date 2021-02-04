@@ -57,6 +57,7 @@
   padding: 10px 15px;
   cursor: pointer;
   position: relative;
+  outline: none;
 }
 
 .Header--button::after {

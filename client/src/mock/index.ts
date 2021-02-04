@@ -10,11 +10,11 @@ export const appBarItems: Array<AppBarProps> = [
     text: 'Portfolio'
   },
   {
-    to: '/About',
+    to: '/about',
     text: 'About'
   },
   {
-    to: 'Pricing',
+    to: '/pricing',
     text: 'Pricing'
   }
 ]
