@@ -1,4 +1,5 @@
 'use strict'
+const path = require('path')
 
 module.exports = {
   siteMetadata: {
@@ -13,6 +14,13 @@ module.exports = {
     }
   },
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`)
+      }
+    },
     {
       resolve: 'gatsby-transformer-remark',
       options: {

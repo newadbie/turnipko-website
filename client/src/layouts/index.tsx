@@ -4,9 +4,11 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import 'modern-normalize'
 import '../styles/normalize'
+import './layout.css'
 
 import LayoutRoot from '../components/LayoutRoot'
 import LayoutMain from '../components/LayoutMain'
+import Header from '../components/actionBar/appBar'
 
 interface StaticQueryProps {
   site: {
@@ -39,6 +41,7 @@ const IndexLayout: React.FC = ({ children }) => (
             { name: 'keywords', content: data.site.siteMetadata.keywords }
           ]}
         />
+        <Header />
         <LayoutMain>{children}</LayoutMain>
       </LayoutRoot>
     )}
