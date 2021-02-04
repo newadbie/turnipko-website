@@ -9,7 +9,7 @@ const Items: FC = () => {
   return (
     <div className="Items--wrapper">
       {appBarItems.map(item => (
-        <Item to={item.to} text={item.text} />
+        <Item to={item.to} key={item.to} text={item.text} />
       ))}
     </div>
   )
