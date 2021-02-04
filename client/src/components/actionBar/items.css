@@ -10,6 +10,7 @@
 
 .Item--link.active {
   color: #f0d8e6;
+  font-weight: bold;
 }
 
 .Item--link:hover {

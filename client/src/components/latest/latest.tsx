@@ -11,6 +11,10 @@ const Latest: FC = () => {
         <h1>Latest pictures</h1>
       </header>
       <LatestItems />
+      <section className="Latest--section">
+        <h2>Wanna see more?</h2>
+        <h3>Checkout gallery</h3>
+      </section>
     </Container>
   )
 }

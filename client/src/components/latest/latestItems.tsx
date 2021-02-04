@@ -22,7 +22,7 @@ const LatestItems: FC = () => {
   const items = data.allFile.nodes
   console.log(data)
   return (
-    <Grid container spacing={3} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <Grid container spacing={6} style={{ display: 'flex', marginBottom: '80px', alignItems: 'center', justifyContent: 'center' }}>
       {items.map((item: any, index: number) => {
         if (item.childImageSharp === null) return null
         return <LatestItem fluidObject={item.childImageSharp.fluid} key={index} />
