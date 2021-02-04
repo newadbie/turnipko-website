@@ -8,7 +8,7 @@ import './layout.css'
 
 import LayoutRoot from '../components/LayoutRoot'
 import LayoutMain from '../components/LayoutMain'
-import Header from '../components/actionBar/appBar'
+import AppBar from '../components/actionBar/appBar'
 
 interface StaticQueryProps {
   site: {
@@ -41,7 +41,7 @@ const IndexLayout: React.FC = ({ children }) => (
             { name: 'keywords', content: data.site.siteMetadata.keywords }
           ]}
         />
-        <Header />
+        <AppBar />
         <LayoutMain>{children}</LayoutMain>
       </LayoutRoot>
     )}
