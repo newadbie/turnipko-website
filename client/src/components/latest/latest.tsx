@@ -1,5 +1,4 @@
 import { Container } from '@material-ui/core'
-import { FluidObject } from 'gatsby-image'
 import React, { FC } from 'react'
 
 import './latest.css'

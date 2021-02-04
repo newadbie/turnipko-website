@@ -1,5 +1,4 @@
 import { Grid } from '@material-ui/core'
-import { FluidObject } from 'gatsby-image'
 import React, { FC } from 'react'
 import LatestItem from './latestItem'
 
@@ -23,7 +22,7 @@ const LatestItems: FC = () => {
   const items = data.allFile.nodes
   console.log(data)
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       {items.map((item: any, index: number) => {
         if (item.childImageSharp === null) return null
         return <LatestItem fluidObject={item.childImageSharp.fluid} key={index} />

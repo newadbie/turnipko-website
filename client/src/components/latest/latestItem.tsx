@@ -9,7 +9,7 @@ interface Props {
 
 const LatestItem: FC<Props> = ({ fluidObject }) => {
   return (
-    <Grid item xs={4} className="Latest--item">
+    <Grid item xs={10} sm={6} md={4} className="Latest--item">
       <Img fluid={fluidObject} style={{ height: '100%' }} />
     </Grid>
   )
