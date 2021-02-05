@@ -6,6 +6,7 @@ import { Container } from '@material-ui/core'
 import Header from '../components/header/header'
 import Latest from '../components/latest/latest'
 import About from '../components/about/about'
+import Contact from '../components/contact/contact'
 
 const IndexPage: FC<PageProps> = ({ data }: any) => {
   console.log(data)
@@ -14,12 +15,7 @@ const IndexPage: FC<PageProps> = ({ data }: any) => {
       <Header fluidObject={data.placeholderImage.childImageSharp.fluid} />
       <Latest />
       <About />
-      <Container>
-        <h1>Hi people</h1>
-        <p>Welcome to your new Gatsby site.</p>
-        <p>Now go build something great.</p>
-        <Link to="/page-2/">Go to page 2</Link>
-      </Container>
+      <Contact />
     </IndexLayout>
   )
 }
