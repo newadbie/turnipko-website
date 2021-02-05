@@ -7,7 +7,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 const LatestItems: FC = () => {
   const data = useStaticQuery(graphql`
     query {
-      allFile(filter: { relativeDirectory: { eq: "latestGallery" } }) {
+      allFile(filter: { relativeDirectory: { eq: "latestGallery" } }, limit: 3) {
         nodes {
           childImageSharp {
             fluid {
@@ -20,7 +20,6 @@ const LatestItems: FC = () => {
   `)
 
   const items = data.allFile.nodes
-  console.log(data)
   return (
     <Grid container spacing={6} style={{ display: 'flex', marginBottom: '80px', alignItems: 'center', justifyContent: 'center' }}>
       {items.map((item: any, index: number) => {

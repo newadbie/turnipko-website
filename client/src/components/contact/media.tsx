@@ -3,7 +3,9 @@ import React, { FC } from 'react'
 import PhoneIcon from '@material-ui/icons/Phone'
 import DraftsIcon from '@material-ui/icons/Drafts'
 
+// @ts-ignore
 import FacebookIcon from '../../assets/Facebook.svg'
+// @ts-ignore
 import InstagramIcon from '../../assets/Instagram.svg'
 
 const Media: FC = () => {

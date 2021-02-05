@@ -1,10 +1,10 @@
-import React, { FC, useRef } from 'react'
+import React, { FC, createRef } from 'react'
 import ContactInput from './contactInput'
 
 const ContactForm: FC = () => {
-  const nameRef = useRef<HTMLInputElement>(null)
-  const emailRef = useRef<HTMLInputElement>(null)
-  const messageRef = useRef<HTMLTextAreaElement>(null)
+  const nameRef = createRef<HTMLInputElement>()
+  const emailRef = createRef<HTMLInputElement>()
+  const messageRef = createRef<HTMLTextAreaElement>()
 
   return (
     <form className="Contact--form" onSubmit={e => e.preventDefault()}>

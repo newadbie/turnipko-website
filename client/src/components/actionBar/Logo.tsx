@@ -18,11 +18,17 @@ const Logo: FC = () => {
     }
   `)
 
+  const siteUrl = typeof window !== 'undefined' ? window.location.host : ''
+
   if (!data?.placeholderImage?.childImageSharp?.fixed) {
     return <p>Not found</p>
   }
 
-  return <Img fixed={data.placeholderImage.childImageSharp.fixed} className="Logo" />
+  return (
+    <a href="#" style={{ margin: 0, padding: 0, display: 'block' }}>
+      <Img fixed={data.placeholderImage.childImageSharp.fixed} className="Logo" />
+    </a>
+  )
 }
 
 export default Logo

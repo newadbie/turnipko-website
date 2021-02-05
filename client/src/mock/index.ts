@@ -6,8 +6,8 @@ export const appBarItems: Array<AppBarProps> = [
     text: 'Home'
   },
   {
-    to: '/portfolio',
-    text: 'Portfolio'
+    to: '/gallery',
+    text: 'Gallery'
   },
   {
     to: '/about',

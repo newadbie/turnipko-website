@@ -1,13 +1,12 @@
-import React, { FC, RefObject } from 'react'
+import React, { FC, RefObject, forwardRef } from 'react'
 
-interface Props {
+type Props = {
   labelText: string
   placeholder?: string
-  ref: RefObject<HTMLInputElement | HTMLTextAreaElement>
   type: 'text' | 'email' | 'textarea'
 }
 
-const ContactInput: FC<Props> = ({ labelText, placeholder, ref, type }) => {
+const ContactInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(({ labelText, placeholder, type }, ref) => {
   return (
     <div className="Form--row">
       <label>{labelText}</label>
@@ -18,6 +17,6 @@ const ContactInput: FC<Props> = ({ labelText, placeholder, ref, type }) => {
       )}
     </div>
   )
-}
+})
 
 export default ContactInput
