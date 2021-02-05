@@ -1,18 +1,32 @@
-import { Container } from '@material-ui/core'
 import React, { FC } from 'react'
-import Page from '../components/Page'
+
+import { PageProps, graphql } from 'gatsby'
+
+import Baner from '../components/common/banner'
 import IndexLayout from '../layouts'
 
-const Portfolio: FC = () => {
+const Portfolio: FC<PageProps> = ({ data }: any) => {
   return (
     <IndexLayout>
-      <Page>
-        <Container>
-          <p>Test</p>
-        </Container>
-      </Page>
+      <Baner
+        title="My portfolio"
+        fluidObject={data.placeholderImage.childImageSharp.fluid}
+        subTitle="Click on the picture to visit specific gallery"
+      />
     </IndexLayout>
   )
 }
 
 export default Portfolio
+
+export const PageQuery = graphql`
+  query {
+    placeholderImage: file(relativePath: { eq: "PortfolioBg.png" }) {
+      childImageSharp {
+        fluid(maxHeight: 1400) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`

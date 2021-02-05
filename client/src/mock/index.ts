@@ -16,5 +16,9 @@ export const appBarItems: Array<AppBarProps> = [
   {
     to: '/pricing',
     text: 'Pricing'
+  },
+  {
+    to: '/contact',
+    text: 'Contact'
   }
 ]

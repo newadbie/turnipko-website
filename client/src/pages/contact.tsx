@@ -4,16 +4,18 @@ import { PageProps, graphql } from 'gatsby'
 
 import Baner from '../components/common/banner'
 import IndexLayout from '../layouts'
+import ContactComp from '../components/contact/contact'
 
-const Pricing: FC<PageProps> = ({ data }: any) => {
+const Contact: FC<PageProps> = ({ data }: any) => {
   return (
     <IndexLayout>
-      <Baner title="Pricing" subTitle="Click on product to see details" fluidObject={data.placeholderImage.childImageSharp.fluid} />
+      <Baner title="Contact" fluidObject={data.placeholderImage.childImageSharp.fluid} />
+      <ContactComp hideHeader />
     </IndexLayout>
   )
 }
 
-export default Pricing
+export default Contact
 
 export const PageQuery = graphql`
   query {
