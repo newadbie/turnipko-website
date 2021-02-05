@@ -1,14 +1,34 @@
 import React, { FC } from 'react'
 
+import PhoneIcon from '@material-ui/icons/Phone'
+import DraftsIcon from '@material-ui/icons/Drafts'
+
+import FacebookIcon from '../../assets/Facebook.svg'
+import InstagramIcon from '../../assets/Instagram.svg'
+
 const Media: FC = () => {
   return (
     <>
       <p>Want to contact me directly?</p>
-      <p>661101144</p>
-      <p>contact@turnipko.com</p>
+      <p>
+        <PhoneIcon />
+        &nbsp; 661101144
+      </p>
+      <p>
+        <DraftsIcon />
+        &nbsp;contact@turnipko.com
+      </p>
       <div className="Media--wrapper">
-        <div>FB</div>
-        <div>IG</div>
+        <div>
+          <a href="#">
+            <FacebookIcon />
+          </a>
+        </div>
+        <div>
+          <a href="#">
+            <InstagramIcon />
+          </a>
+        </div>
       </div>
     </>
   )

@@ -61,6 +61,9 @@
 
 .Contact--mediaWrapper p {
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fafafa;
   text-align: center;
 }
