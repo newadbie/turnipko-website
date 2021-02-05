@@ -9,6 +9,7 @@ import './layout.css'
 import LayoutRoot from '../components/LayoutRoot'
 import LayoutMain from '../components/LayoutMain'
 import AppBar from '../components/actionBar/appBar'
+import Footer from '../components/footer/Footer'
 
 interface StaticQueryProps {
   site: {
@@ -43,6 +44,7 @@ const IndexLayout: React.FC = ({ children }) => (
         />
         <AppBar />
         <LayoutMain>{children}</LayoutMain>
+        <Footer />
       </LayoutRoot>
     )}
   />

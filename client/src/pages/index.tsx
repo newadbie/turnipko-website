@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
-import { Link, PageProps, graphql } from 'gatsby'
+import { PageProps, graphql } from 'gatsby'
 
 import IndexLayout from '../layouts'
-import { Container } from '@material-ui/core'
 import Header from '../components/header/header'
 import Latest from '../components/latest/latest'
 import About from '../components/about/about'
