@@ -16,8 +16,8 @@ module.exports = {
       resolve: 'gatsby-source-strapi',
       options: {
         apiURL: 'http://localhost:1337',
-        contentTypes: ['galeria', 'menu'],
         singleTypes: ['portfolio'],
+        contentTypes: ['gallery', 'nav'],
         queryLimit: 1000
       }
     },
