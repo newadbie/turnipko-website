@@ -5,26 +5,31 @@ import LatestItem from './latestItem'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const LatestItems: FC = () => {
-  const data = useStaticQuery(graphql`
+  const query = graphql`
     query {
-      allFile(filter: { relativeDirectory: { eq: "latestGallery" } }, limit: 3) {
-        nodes {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+      allStrapiGallery(limit: 3, sort: { fields: [createdAt], order: DESC }) {
+        edges {
+          node {
+            thumb {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
             }
           }
         }
       }
     }
-  `)
+  `
+  const data = useStaticQuery(query)
 
-  const items = data.allFile.nodes
+  const items = data.allStrapiGallery.edges
   return (
     <Grid container spacing={6} style={{ display: 'flex', marginBottom: '80px', alignItems: 'center', justifyContent: 'center' }}>
       {items.map((item: any, index: number) => {
         if (item.childImageSharp === null) return null
-        return <LatestItem fluidObject={item.childImageSharp.fluid} key={index} />
+        return <LatestItem fluidObject={item.node.thumb.childImageSharp.fluid} key={index} />
       })}
     </Grid>
   )
