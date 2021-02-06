@@ -13,6 +13,15 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-source-strapi',
+      options: {
+        apiURL: 'http://localhost:1337',
+        contentTypes: ['galeria', 'menu'],
+        singleTypes: ['portfolio'],
+        queryLimit: 1000
+      }
+    },
+    {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {

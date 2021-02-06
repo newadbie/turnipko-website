@@ -9,19 +9,23 @@ import SlideButton from '../common/slideButton'
 
 interface Props {
   fluidObject: FluidObject
+  headerTitle: string
+  headerSubTitle: string
+  showContactButton: boolean
+  contactButtonText: string
 }
 
-const Header: FC<Props> = ({ fluidObject }) => {
+const Header: FC<Props> = ({ fluidObject, showContactButton, headerTitle, headerSubTitle, contactButtonText }) => {
   return (
     <header className="Header">
       <Baner fluidObject={fluidObject} />
       <Container>
         <div className="Header-contentWrapper">
           <div className="Header--text">
-            <h1 className="Header--title">Turnipko</h1>
-            <h2 className="Header--subtitle">Beautiful pictures of your baby</h2>
+            <h1 className="Header--title">{headerTitle}</h1>
+            <h2 className="Header--subtitle">{headerSubTitle}</h2>
           </div>
-          <SlideButton text="Contact me" />
+          {showContactButton ? <SlideButton text={contactButtonText} /> : null}
         </div>
       </Container>
     </header>

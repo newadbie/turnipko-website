@@ -19,7 +19,6 @@ const About: FC = () => {
       }
     }
   `)
-  console.log(data)
   return (
     <section className="About">
       <Container>

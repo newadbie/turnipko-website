@@ -8,10 +8,15 @@ import About from '../components/about/about'
 import Contact from '../components/contact/contact'
 
 const IndexPage: FC<PageProps> = ({ data }: any) => {
-  console.log(data)
   return (
     <IndexLayout>
-      <Header fluidObject={data.placeholderImage.childImageSharp.fluid} />
+      <Header
+        headerTitle={data.strapiPortfolio.BanerTitle}
+        headerSubTitle={data.strapiPortfolio.BanerSubTitle}
+        contactButtonText={data.strapiPortfolio.ContactButtonText}
+        showContactButton={data.strapiPortfolio.ShowContactButton}
+        fluidObject={data.strapiPortfolio.BanerBackground.childImageSharp.fluid}
+      />
       <Latest />
       <About />
       <Contact />
@@ -23,10 +28,19 @@ export default IndexPage
 
 export const PageQuery = graphql`
   query {
-    placeholderImage: file(relativePath: { eq: "headerbg.jpg" }) {
-      childImageSharp {
-        fluid(maxHeight: 1400) {
-          ...GatsbyImageSharpFluid
+    strapiPortfolio {
+      BanerTitle
+      BanerSubTitle
+      LatestPhotos
+      EncourageText
+      AnchorText
+      ShowContactButton
+      ContactButtonText
+      BanerBackground {
+        childImageSharp {
+          fluid(maxHeight: 1400) {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
     }
