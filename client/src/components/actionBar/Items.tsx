@@ -20,9 +20,11 @@ const Items: FC = () => {
     }
   `
   const data = useStaticQuery(query)
+
   const appBarItems: Array<any> = data.allStrapiNav.edges.map((navItem: any) => {
     return { to: navItem.node.anchor, text: navItem.node.text }
   })
+
   return (
     <div className="Items--wrapper">
       {appBarItems.map(item => (

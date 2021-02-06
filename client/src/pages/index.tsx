@@ -17,8 +17,12 @@ const IndexPage: FC<PageProps> = ({ data }: any) => {
         showContactButton={data.strapiPortfolio.ShowContactButton}
         fluidObject={data.strapiPortfolio.BanerBackground.childImageSharp.fluid}
       />
-      <Latest />
-      <About />
+      <Latest
+        headerText={data.strapiPortfolio.LatestPhotos}
+        anchorText={data.strapiPortfolio.AnchorText}
+        encourageText={data.strapiPortfolio.EncourageText}
+      />
+      <About typhographyText={data.strapiAbout.firstTyphography} avatarFixed={data.strapiAbout.avatar.childImageSharp.fixed} />
       <Contact />
     </IndexLayout>
   )
@@ -40,6 +44,18 @@ export const PageQuery = graphql`
         childImageSharp {
           fluid(maxHeight: 1400) {
             ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+    strapiAbout {
+      firstTyphography
+      restOfDescription
+
+      avatar {
+        childImageSharp {
+          fixed(width: 217, height: 217) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
