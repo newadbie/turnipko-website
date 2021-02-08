@@ -113,5 +113,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+.env.development
 
 CMS/*

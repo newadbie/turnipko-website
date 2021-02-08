@@ -72,7 +72,7 @@ const SingleAlbum = ({ data }: QueryType) => {
       photos.push({
         width: photo.width,
         height: photo.height,
-        src: `http://localhost:1337${photo.url}`
+        src: `${process.env.GATSBY_API_URL}${photo.url}`
       })
     })
   )

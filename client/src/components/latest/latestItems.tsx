@@ -62,7 +62,7 @@ const LatestItems: FC = () => {
   const data: StaticQueryType = useStaticQuery(query)
 
   const allPhotos: Array<PhotoType> = data.allStrapiAlbum.nodes[0].photos
-    .map(photo => ({ src: `http://localhost:1337${photo.url}`, width: photo.width, height: photo.height }))
+    .map(photo => ({ src: `${process.env.GATSBY_API_URL}${photo.url}`, width: photo.width, height: photo.height }))
     .reverse()
     .slice(0, 3) // We catch reversed array because it is by default sorted by DESC, to show recent photos we have to reverse array right here!
 
