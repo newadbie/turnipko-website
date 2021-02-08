@@ -66,8 +66,8 @@ const SingleAlbum = ({ data }: QueryType) => {
   }
 
   const photos: Array<PhotoType> = []
-  data.allStrapiAlbum.edges.reverse().forEach(edge =>
-    edge.node.photos.reverse().forEach(photo => {
+  data.allStrapiAlbum.edges.forEach(edge =>
+    edge.node.photos.forEach(photo => {
       // To fetch the newest photo reverse gallery
       photos.push({
         width: photo.width,
@@ -84,7 +84,7 @@ const SingleAlbum = ({ data }: QueryType) => {
       <Container className="SingleAlbum">
         {photos !== undefined ? (
           <>
-            <Gallery photos={photos} onClick={openLightBox} />
+            <Gallery photos={photos.reverse()} onClick={openLightBox} />
             <ModalGateway>
               {viewerIsOpen ? (
                 <Modal onClose={closeLightBox}>
