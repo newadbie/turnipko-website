@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import { Container, Grid } from '@material-ui/core'
 import Img, { FluidObject } from 'gatsby-image'
 
@@ -47,12 +47,12 @@ const Gallery: FC = () => {
 
   const categoryImgs = data.allStrapiCategory.edges.map(category => (
     <Grid item xs={10} sm={6} md={4} className="Gallery--category">
-      <a href={`/gallery/${category.node.id}`}>
+      <Link to={`/gallery/${category.node.name.replace(/\s+/g, '-')}`}>
         <Img fluid={category.node.photo.childImageSharp.fluid} className="Category--item" />
         <div className="Category--textContainer">
           <span>{category.node.name}</span>
         </div>
-      </a>
+      </Link>
     </Grid>
   ))
 
