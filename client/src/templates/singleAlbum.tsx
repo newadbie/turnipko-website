@@ -1,9 +1,13 @@
-import React from 'react'
-
+import React, { useState, useCallback } from 'react'
 import { graphql } from 'gatsby'
+
 import IndexLayout from '../layouts'
-import { Container, GridList } from '@material-ui/core'
-import GridListTile from '@material-ui/core/GridListTile'
+import { Container } from '@material-ui/core'
+
+import Gallery from 'react-photo-gallery'
+import Carousel, { Modal, ModalGateway } from 'react-images'
+
+import './singleAlbum.css'
 
 type QueryType = {
   data: {
@@ -16,7 +20,6 @@ type QueryType = {
                 url: string
                 width: number
                 height: number
-                updatedAt: string
               }
             ]
           }
@@ -27,12 +30,26 @@ type QueryType = {
 }
 
 const SingleAlbum = ({ data }: QueryType) => {
+  const [currentImage, setCurrentImage] = useState<number>(0)
+  const [viewerIsOpen, setViewerIsOpen] = useState<boolean>(false)
+
+  const openLightBox = useCallback((event, { photo, index }: { photo: any; index: number }) => {
+    setCurrentImage(index)
+    setViewerIsOpen(true)
+  }, [])
+
+  const closeLightBox = () => {
+    setCurrentImage(0)
+    setViewerIsOpen(false)
+  }
+
   const photos = data.allStrapiAlbum.edges
     .map(edge =>
       edge.node.photos.map(photo => ({
-        rows: photo.width > photo.height ? 1 : 2,
-        url: `http://localhost:1337${photo.url}`,
-        updatedAt: photo.updatedAt
+        // rows: photo.width > photo.height ? 1 : 2,
+        width: photo.width,
+        height: photo.height,
+        src: `http://localhost:1337${photo.url}`
       }))
     )
     .pop()
@@ -40,14 +57,35 @@ const SingleAlbum = ({ data }: QueryType) => {
 
   return (
     <IndexLayout>
-      <Container>
-        <GridList cols={3}>
+      <Container className="SingleAlbum">
+        {photos !== undefined ? (
+          <>
+            <Gallery photos={photos} onClick={openLightBox} />
+            <ModalGateway>
+              {viewerIsOpen ? (
+                <Modal onClose={closeLightBox}>
+                  <Carousel
+                    currentIndex={currentImage}
+                    views={photos.map(photo => ({
+                      ...photo,
+                      source: photo.src
+                    }))}
+                  />
+                </Modal>
+              ) : null}
+            </ModalGateway>
+          </>
+        ) : (
+          ''
+        )}
+
+        {/* <GridList cols={3}>
           {photos?.map((photo, index) => (
             <GridListTile rows={photo.rows} key={index}>
               <img src={photo.url} />
             </GridListTile>
           ))}
-        </GridList>
+        </GridList> */}
       </Container>
     </IndexLayout>
   )
@@ -62,7 +100,6 @@ export const query = graphql`
             url
             width
             height
-            updatedAt
           }
         }
       }
