@@ -15,16 +15,15 @@
   overflow: hidden;
 }
 
-.Item--img {
+.react-photo-gallery--gallery div img {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
   height: 100%;
   max-width: 100%;
   object-fit: fill;
-  filter: grayscale(50%);
   transition: 250ms;
 }
 
-.Item--img:hover {
+.react-photo-gallery--gallery div img:hover {
   filter: grayscale(0);
 }
 

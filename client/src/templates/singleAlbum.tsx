@@ -55,13 +55,12 @@ const SingleAlbum = ({ data }: QueryType) => {
 
   const categoryData = data.allStrapiAlbum.edges[0].node.category
 
-  const openLightBox = useCallback((event, { photo, index }: { photo: any; index: number }) => {
+  const openLightBox = useCallback((_, { photo, index }: { photo: any; index: number }) => {
     setCurrentImage(index)
     setViewerIsOpen(true)
   }, [])
 
   const closeLightBox = () => {
-    setCurrentImage(0)
     setViewerIsOpen(false)
   }
 
