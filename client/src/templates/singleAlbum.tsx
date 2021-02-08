@@ -8,6 +8,18 @@ import Gallery from 'react-photo-gallery'
 import Carousel, { Modal, ModalGateway } from 'react-images'
 
 import './singleAlbum.css'
+import { FluidObject } from 'gatsby-image'
+import Baner from '../components/common/banner'
+
+type PhotoType = {
+  src: string
+  srcSet?: string | string[] | undefined
+  sizes?: string | string[] | undefined
+  width: number
+  height: number
+  alt?: string | undefined
+  key?: string | undefined
+}
 
 type QueryType = {
   data: {
@@ -15,6 +27,14 @@ type QueryType = {
       edges: [
         {
           node: {
+            category: {
+              name: string
+              photo: {
+                childImageSharp: {
+                  fluid: FluidObject
+                }
+              }
+            }
             photos: [
               {
                 url: string
@@ -33,6 +53,8 @@ const SingleAlbum = ({ data }: QueryType) => {
   const [currentImage, setCurrentImage] = useState<number>(0)
   const [viewerIsOpen, setViewerIsOpen] = useState<boolean>(false)
 
+  const categoryData = data.allStrapiAlbum.edges[0].node.category
+
   const openLightBox = useCallback((event, { photo, index }: { photo: any; index: number }) => {
     setCurrentImage(index)
     setViewerIsOpen(true)
@@ -43,20 +65,22 @@ const SingleAlbum = ({ data }: QueryType) => {
     setViewerIsOpen(false)
   }
 
-  const photos = data.allStrapiAlbum.edges
-    .map(edge =>
-      edge.node.photos.map(photo => ({
-        // rows: photo.width > photo.height ? 1 : 2,
+  const photos: Array<PhotoType> = []
+  data.allStrapiAlbum.edges.reverse().forEach(edge =>
+    edge.node.photos.reverse().forEach(photo => {
+      // To fetch the newest photo reverse gallery
+      photos.push({
         width: photo.width,
         height: photo.height,
         src: `http://localhost:1337${photo.url}`
-      }))
-    )
-    .pop()
-    ?.reverse() // To get sorted data by the recent photos reverse the gallery
+      })
+    })
+  )
 
+  console.log(data)
   return (
     <IndexLayout>
+      <Baner title={categoryData.name} fluidObject={categoryData.photo.childImageSharp.fluid} />
       <Container className="SingleAlbum">
         {photos !== undefined ? (
           <>
@@ -96,6 +120,16 @@ export const query = graphql`
     allStrapiAlbum(filter: { category: { id: { eq: $id } } }) {
       edges {
         node {
+          category {
+            name
+            photo {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
           photos {
             url
             width
