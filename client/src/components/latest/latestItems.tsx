@@ -33,7 +33,7 @@ type StaticQueryType = {
 const LatestItems: FC = () => {
   const [currentImage, setCurrentImage] = useState<number>(0)
   const [viewerIsOpen, setViewerIsOpen] = useState<boolean>(false)
-
+  // @ts-ignore
   const openLightBox = useCallback((_, { photo, index }: { photo: any; index: number }) => {
     setCurrentImage(index)
     setViewerIsOpen(true)

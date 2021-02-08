@@ -21,30 +21,30 @@ type PhotoType = {
   key?: string | undefined
 }
 
+type NodeType = {
+  node: {
+    category: {
+      name: string
+      photo: {
+        childImageSharp: {
+          fluid: FluidObject
+        }
+      }
+    }
+    photos: [
+      {
+        url: string
+        width: number
+        height: number
+      }
+    ]
+  }
+}
+
 type QueryType = {
   data: {
     allStrapiAlbum: {
-      edges: [
-        {
-          node: {
-            category: {
-              name: string
-              photo: {
-                childImageSharp: {
-                  fluid: FluidObject
-                }
-              }
-            }
-            photos: [
-              {
-                url: string
-                width: number
-                height: number
-              }
-            ]
-          }
-        }
-      ]
+      edges: Array<NodeType>
     }
   }
 }
@@ -53,8 +53,9 @@ const SingleAlbum = ({ data }: QueryType) => {
   const [currentImage, setCurrentImage] = useState<number>(0)
   const [viewerIsOpen, setViewerIsOpen] = useState<boolean>(false)
 
-  const categoryData = data.allStrapiAlbum.edges[0].node.category
+  const categoryData = data.allStrapiAlbum.edges[0] ? data.allStrapiAlbum.edges[0].node.category : null
 
+  // @ts-ignore
   const openLightBox = useCallback((_, { photo, index }: { photo: any; index: number }) => {
     setCurrentImage(index)
     setViewerIsOpen(true)
@@ -76,40 +77,47 @@ const SingleAlbum = ({ data }: QueryType) => {
     })
   )
 
-  console.log(data)
   return (
     <IndexLayout>
-      <Baner title={categoryData.name} fluidObject={categoryData.photo.childImageSharp.fluid} />
-      <Container className="SingleAlbum">
-        {photos !== undefined ? (
-          <>
-            <Gallery photos={photos.reverse()} onClick={openLightBox} />
-            <ModalGateway>
-              {viewerIsOpen ? (
-                <Modal onClose={closeLightBox}>
-                  <Carousel
-                    currentIndex={currentImage}
-                    views={photos.map(photo => ({
-                      ...photo,
-                      source: photo.src
-                    }))}
-                  />
-                </Modal>
-              ) : null}
-            </ModalGateway>
-          </>
-        ) : (
-          ''
-        )}
+      {categoryData ? (
+        <>
+          <Baner title={categoryData.name} fluidObject={categoryData.photo.childImageSharp.fluid} />
+          <Container className="SingleAlbum">
+            {photos !== undefined ? (
+              <>
+                <Gallery photos={photos.reverse()} onClick={openLightBox} />
+                <ModalGateway>
+                  {viewerIsOpen ? (
+                    <Modal onClose={closeLightBox}>
+                      <Carousel
+                        currentIndex={currentImage}
+                        views={photos.map(photo => ({
+                          ...photo,
+                          source: photo.src
+                        }))}
+                      />
+                    </Modal>
+                  ) : null}
+                </ModalGateway>
+              </>
+            ) : (
+              ''
+            )}
 
-        {/* <GridList cols={3}>
+            {/* <GridList cols={3}>
           {photos?.map((photo, index) => (
             <GridListTile rows={photo.rows} key={index}>
               <img src={photo.url} />
             </GridListTile>
           ))}
         </GridList> */}
-      </Container>
+          </Container>
+        </>
+      ) : (
+        <Container>
+          <h1>Not found</h1>
+        </Container>
+      )}
     </IndexLayout>
   )
 }
