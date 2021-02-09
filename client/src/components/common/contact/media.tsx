@@ -8,6 +8,8 @@ import FacebookIcon from '../../../assets/Facebook.svg'
 // @ts-ignore
 import InstagramIcon from '../../../assets/Instagram.svg'
 
+import classes from './contact.module.css'
+
 const Media: FC = () => {
   return (
     <>
@@ -20,7 +22,7 @@ const Media: FC = () => {
         <DraftsIcon />
         &nbsp;contact@turnipko.com
       </p>
-      <div className="Media--wrapper">
+      <div className={classes.Media}>
         <div>
           <a href="#">
             <FacebookIcon />

@@ -3,7 +3,7 @@ import { Container } from '@material-ui/core'
 
 import Img, { FixedObject } from 'gatsby-image'
 
-import './style.scss'
+import classes from './about.module.css'
 import SlideButton from '../../common/slideButton'
 
 interface Props {
@@ -13,18 +13,18 @@ interface Props {
 
 const About: FC<Props> = ({ typhographyText, avatarFixed }) => {
   return (
-    <section className="About">
+    <section className={classes.About}>
       <Container>
-        <header className="About--header">
+        <header className={classes.Header}>
           <h1>About me</h1>
         </header>
-        <section className="About--section">
-          <div className="About--text" style={{ width: '280px' }}>
+        <section className={classes.Section}>
+          <div className={classes.Text} style={{ width: '280px' }}>
             <p>{typhographyText}</p>
-            <SlideButton text="Read more" className="About--button" />
+            <SlideButton text="Read more" className={classes.Button} />
           </div>
-          <div className="About--imageWrapper">
-            <Img fixed={avatarFixed} className="About--image" />
+          <div className={classes.ImageWrapper}>
+            <Img fixed={avatarFixed} className={classes.Image} />
           </div>
         </section>
       </Container>

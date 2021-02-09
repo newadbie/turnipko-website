@@ -2,7 +2,7 @@ import { FluidObject } from 'gatsby-image'
 import React, { FC } from 'react'
 import Img from 'gatsby-image'
 
-import './banner.scss'
+import classes from './banner.module.css'
 
 interface Props {
   title: string
@@ -13,11 +13,11 @@ interface Props {
 // This banner is common banner with other pages than homepage.
 const Baner: FC<Props> = ({ title, subTitle, fluidObject }) => {
   return (
-    <header className="CommonBanner">
-      <div className="Banner--background">
-        <Img fluid={fluidObject} className="Banner--backgroundImage" />
+    <header className={classes.CommonBanner}>
+      <div className={classes.Background}>
+        <Img fluid={fluidObject} className={classes.BackgroundImage} />
       </div>
-      <div className="Banner--content">
+      <div className={classes.Content}>
         <div>
           <h1>{title}</h1>
           {subTitle ? <h2>{subTitle}</h2> : null}

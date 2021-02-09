@@ -1,5 +1,7 @@
 import React, { RefObject, forwardRef } from 'react'
 
+import classes from './contact.module.css'
+
 type Props = {
   labelText: string
   placeholder?: string
@@ -8,7 +10,7 @@ type Props = {
 
 const ContactInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(({ labelText, placeholder, type }, ref) => {
   return (
-    <div className="Form--row">
+    <div className={classes.Row}>
       <label>{labelText}</label>
       {type !== 'textarea' ? (
         <input placeholder={placeholder} type={type} ref={ref as RefObject<HTMLInputElement>} />

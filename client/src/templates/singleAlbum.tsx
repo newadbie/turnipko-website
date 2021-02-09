@@ -7,10 +7,9 @@ import { Container } from '@material-ui/core'
 import Gallery from 'react-photo-gallery'
 import Carousel, { Modal, ModalGateway } from 'react-images'
 
+import classes from './singleAlbum.module.css'
 import { FluidObject } from 'gatsby-image'
 import Baner from '../components/common/banner'
-
-import './style.scss'
 
 type PhotoType = {
   src: string
@@ -83,7 +82,7 @@ const SingleAlbum = ({ data }: QueryType) => {
       {categoryData ? (
         <>
           <Baner title={categoryData.name} fluidObject={categoryData.photo.childImageSharp.fluid} />
-          <Container className="SingleAlbum">
+          <Container className={classes.SingleAlbum}>
             {photos !== undefined ? (
               <>
                 <Gallery photos={photos.reverse()} onClick={openLightBox} />

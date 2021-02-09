@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import './slideButton.scss'
+import classes from './slideButton.module.css'
 
 interface Props {
   text: string
@@ -9,7 +9,7 @@ interface Props {
 
 const SlideButton: FC<Props> = ({ text, className }) => {
   return (
-    <button className={`slideButton ${className}`}>
+    <button className={`${classes.SlideButton} ${className}`}>
       <span>{text}</span>
     </button>
   )

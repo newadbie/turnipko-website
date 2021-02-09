@@ -3,6 +3,8 @@ import React, { FC } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
+import classes from './logo.module.css'
+
 const Logo: FC = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -22,7 +24,7 @@ const Logo: FC = () => {
 
   return (
     <a href="#" style={{ margin: 0, padding: 0, display: 'block' }}>
-      <Img fixed={data.placeholderImage.childImageSharp.fixed} className="Logo" />
+      <Img fixed={data.placeholderImage.childImageSharp.fixed} className={classes.Logo} />
     </a>
   )
 }

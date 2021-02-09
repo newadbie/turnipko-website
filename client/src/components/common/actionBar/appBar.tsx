@@ -1,16 +1,16 @@
 import React, { FC } from 'react'
 import { AppBar, Container, Toolbar } from '@material-ui/core'
 
-import './style.scss'
+import classes from './appBar.module.css'
 import Logo from './Logo'
 import Items from './Items'
 
 const Header: FC = () => {
   return (
-    <header className="AppBar-wrapper">
-      <AppBar className="AppBar" elevation={0}>
+    <header className={classes.Wrapper}>
+      <AppBar className={classes.AppBar} elevation={0}>
         <Container>
-          <Toolbar className="Toolbar">
+          <Toolbar className={classes.Toolbar}>
             <Logo />
             <Items />
           </Toolbar>

@@ -1,0 +1,83 @@
+.Contact {
+  background-color: #222;
+  padding-bottom: 80px;
+  padding-top: 40px;
+}
+
+.Header {
+  margin: 0 0 80px 0;
+  text-align: center;
+}
+
+.Header h1 {
+  color: #fafafa;
+  font-weight: normal;
+  font-size: 80px;
+}
+
+.ContentWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.FormWrapper {
+  width: 203px;
+}
+
+.Row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 21px;
+}
+
+.Row label {
+  color: #fafafa;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.Row input:focus {
+  outline: none;
+}
+
+.Row input {
+  height: 40px;
+}
+
+.Row textarea {
+  height: 140px;
+}
+
+.SubmitButton {
+  padding: 10px 38px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.MediaWrapper {
+  margin-left: 80px;
+}
+
+.MediaWrapper p {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fafafa;
+  text-align: center;
+}
+
+.MediaWrapper p:first-child {
+  margin-bottom: 10px;
+}
+
+.Media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fafafa;
+}
+.Media div {
+  padding: 20px;
+}

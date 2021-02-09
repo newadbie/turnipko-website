@@ -3,6 +3,8 @@ import Item from './item'
 
 import { useStaticQuery, graphql } from 'gatsby'
 
+import classes from './items.module.css'
+
 const Items: FC = () => {
   const query = graphql`
     query fetchAllNavarItems {
@@ -24,7 +26,7 @@ const Items: FC = () => {
   })
 
   return (
-    <div className="Items--wrapper">
+    <div className={classes.Wrapper}>
       {appBarItems.map(item => (
         <Item to={item.to} key={item.to} text={item.text} />
       ))}

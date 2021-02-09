@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import './style.scss'
+import './footer.css'
 
 const Footer: FC = () => {
   return (

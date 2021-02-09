@@ -4,7 +4,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 import { Container, Grid } from '@material-ui/core'
 import Img, { FluidObject } from 'gatsby-image'
 
-import './style.scss'
+import classes from './gallery.module.css'
 
 type QueryType = {
   allStrapiCategory: {
@@ -34,7 +34,7 @@ const Gallery: FC = () => {
             id
             photo {
               childImageSharp {
-                fluid(maxWidth: 1400) {
+                fluid(maxWidth: 500) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -45,11 +45,11 @@ const Gallery: FC = () => {
     }
   `)
 
-  const categoryImgs = data.allStrapiCategory.edges.map((category, index) => (
-    <Grid item xs={10} sm={6} md={4} className="Gallery--category" key={index}>
+  const categoryImgs = data.allStrapiCategory.edges.map(category => (
+    <Grid item xs={10} sm={6} md={4} className={classes.Category}>
       <Link to={`/gallery/${category.node.name.replace(/\s+/g, '-')}`}>
-        <Img fluid={category.node.photo.childImageSharp.fluid} className="Category--item" />
-        <div className="Category--textContainer">
+        <Img fluid={category.node.photo.childImageSharp.fluid} className={classes.Item} />
+        <div className={classes.TextContainer}>
           <span>{category.node.name}</span>
         </div>
       </Link>
@@ -59,7 +59,7 @@ const Gallery: FC = () => {
   return (
     <section>
       <Container>
-        <Grid container className="Gallery--grid">
+        <Grid container className={classes.Grid}>
           {categoryImgs}
         </Grid>
       </Container>
