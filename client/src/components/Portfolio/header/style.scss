@@ -1,0 +1,43 @@
+.Header {
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+
+  .Baner::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 400px;
+    background-color: rgba(240, 216, 230, 0.75);
+  }
+
+  .Header-contentWrapper {
+    position: absolute;
+    z-index: 1000;
+    top: 20%;
+
+    .Header--text {
+      margin-bottom: 60px;
+
+      .Header--title {
+        text-transform: uppercase;
+        font-size: 80px;
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+      }
+
+      .Header--subtitle {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: rgba(34, 34, 34, 0.5);
+        line-height: 20px;
+        font-weight: normal;
+      }
+    }
+  }
+}

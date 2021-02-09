@@ -1,7 +1,7 @@
 import { Container } from '@material-ui/core'
 import React, { FC } from 'react'
 
-import './contact.css'
+import './style.scss'
 import ContactForm from './contactForm'
 import Media from './media'
 

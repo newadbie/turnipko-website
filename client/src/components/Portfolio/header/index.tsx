@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import Baner from './baner'
 import { FluidObject } from 'gatsby-image'
 
-import './header.css'
+import './style.scss'
 import { Container } from '@material-ui/core'
 import SlideButton from '../../common/slideButton'
 

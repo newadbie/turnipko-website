@@ -7,9 +7,10 @@ import { Container } from '@material-ui/core'
 import Gallery from 'react-photo-gallery'
 import Carousel, { Modal, ModalGateway } from 'react-images'
 
-import './singleAlbum.css'
 import { FluidObject } from 'gatsby-image'
 import Baner from '../components/common/banner'
+
+import './style.scss'
 
 type PhotoType = {
   src: string

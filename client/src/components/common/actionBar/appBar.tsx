@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { AppBar, Container, Toolbar } from '@material-ui/core'
 
-import './appBar.css'
+import './style.scss'
 import Logo from './Logo'
 import Items from './Items'
 

@@ -33,6 +33,7 @@ module.exports = {
         }
       }
     },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -74,6 +75,7 @@ module.exports = {
     'gatsby-plugin-emotion',
     'gatsby-plugin-typescript',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-sass',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet'
   ]

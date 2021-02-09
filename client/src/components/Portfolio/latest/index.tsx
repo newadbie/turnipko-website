@@ -1,7 +1,7 @@
 import { Container } from '@material-ui/core'
 import React, { FC } from 'react'
 
-import './latest.css'
+import './style.scss'
 import LatestItems from './latestItems'
 
 interface Props {

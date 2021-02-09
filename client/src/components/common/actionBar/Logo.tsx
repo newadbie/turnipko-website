@@ -3,8 +3,6 @@ import React, { FC } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
-import './logo.css'
-
 const Logo: FC = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -17,8 +15,6 @@ const Logo: FC = () => {
       }
     }
   `)
-
-  const siteUrl = typeof window !== 'undefined' ? window.location.host : ''
 
   if (!data?.placeholderImage?.childImageSharp?.fixed) {
     return <p>Not found</p>

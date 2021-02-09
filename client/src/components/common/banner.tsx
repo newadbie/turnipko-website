@@ -2,7 +2,7 @@ import { FluidObject } from 'gatsby-image'
 import React, { FC } from 'react'
 import Img from 'gatsby-image'
 
-import './banner.css'
+import './banner.scss'
 
 interface Props {
   title: string

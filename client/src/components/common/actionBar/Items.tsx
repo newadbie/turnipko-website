@@ -3,8 +3,6 @@ import Item from './item'
 
 import { useStaticQuery, graphql } from 'gatsby'
 
-import './items.css'
-
 const Items: FC = () => {
   const query = graphql`
     query fetchAllNavarItems {

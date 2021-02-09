@@ -8,19 +8,19 @@
   cursor: pointer;
   position: relative;
   outline: none;
-}
 
-.slideButton::after {
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.1);
-  transition: all 0.35s;
-}
+  &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    transition: all 0.35s;
+  }
 
-.slideButton:hover::after {
-  width: 100%;
+  &:hover::after {
+    width: 100%;
+  }
 }

@@ -4,7 +4,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 import { Container, Grid } from '@material-ui/core'
 import Img, { FluidObject } from 'gatsby-image'
 
-import './gallery.css'
+import './style.scss'
 
 type QueryType = {
   allStrapiCategory: {
@@ -34,7 +34,7 @@ const Gallery: FC = () => {
             id
             photo {
               childImageSharp {
-                fluid(maxWidth: 500) {
+                fluid(maxWidth: 1400) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -45,8 +45,8 @@ const Gallery: FC = () => {
     }
   `)
 
-  const categoryImgs = data.allStrapiCategory.edges.map(category => (
-    <Grid item xs={10} sm={6} md={4} className="Gallery--category">
+  const categoryImgs = data.allStrapiCategory.edges.map((category, index) => (
+    <Grid item xs={10} sm={6} md={4} className="Gallery--category" key={index}>
       <Link to={`/gallery/${category.node.name.replace(/\s+/g, '-')}`}>
         <Img fluid={category.node.photo.childImageSharp.fluid} className="Category--item" />
         <div className="Category--textContainer">

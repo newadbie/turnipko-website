@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import './slideButton.css'
+import './slideButton.scss'
 
 interface Props {
   text: string
