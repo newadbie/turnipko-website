@@ -27,8 +27,6 @@ exports.createPages = async ({ graphql, actions }) => {
     id: category.node.strapiId
   }))
 
-  console.log(allCategories)
-
   allCategories.forEach(category => {
     createPage({
       path: `/gallery/${category.name}`,
@@ -38,6 +36,4 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     })
   })
-
-  // console.log(JSON.stringify(result, null, 4))
 }
