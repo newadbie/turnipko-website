@@ -4,7 +4,7 @@ import { Container } from '@material-ui/core'
 import Img, { FixedObject } from 'gatsby-image'
 
 import './about.css'
-import SlideButton from '../common/slideButton'
+import SlideButton from '../../common/slideButton'
 
 interface Props {
   typhographyText: string

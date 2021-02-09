@@ -1,4 +1,4 @@
-import { AppBarProps } from '../components/actionBar/item'
+import { AppBarProps } from '../components/common/actionBar/item'
 
 export const appBarItems: Array<AppBarProps> = [
   {

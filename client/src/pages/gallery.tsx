@@ -4,7 +4,7 @@ import { PageProps, graphql } from 'gatsby'
 import { FluidObject } from 'gatsby-image'
 
 import Baner from '../components/common/banner'
-import GalleryComp from '../components/gallery/gallery'
+import GalleryComp from '../components/Gallery/gallery'
 import IndexLayout from '../layouts'
 
 type QueryProps = {

@@ -5,7 +5,7 @@ import { FluidObject } from 'gatsby-image'
 
 import './header.css'
 import { Container } from '@material-ui/core'
-import SlideButton from '../common/slideButton'
+import SlideButton from '../../common/slideButton'
 
 interface Props {
   fluidObject: FluidObject

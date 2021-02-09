@@ -8,8 +8,8 @@ import './layout.css'
 
 import LayoutRoot from '../components/LayoutRoot'
 import LayoutMain from '../components/LayoutMain'
-import AppBar from '../components/actionBar/appBar'
-import Footer from '../components/footer/Footer'
+import AppBar from '../components/common/actionBar/appBar'
+import Footer from '../components/common/footer/Footer'
 
 interface StaticQueryProps {
   site: {

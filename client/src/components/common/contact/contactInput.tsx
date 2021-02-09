@@ -1,4 +1,4 @@
-import React, { FC, RefObject, forwardRef } from 'react'
+import React, { RefObject, forwardRef } from 'react'
 
 type Props = {
   labelText: string

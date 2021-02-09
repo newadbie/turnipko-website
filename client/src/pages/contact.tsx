@@ -4,7 +4,7 @@ import { PageProps, graphql } from 'gatsby'
 
 import Baner from '../components/common/banner'
 import IndexLayout from '../layouts'
-import ContactComp from '../components/contact/contact'
+import ContactComp from '../components/common/contact/contact'
 
 const Contact: FC<PageProps> = ({ data }: any) => {
   return (
