@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
 
 import { PageProps, graphql } from 'gatsby'
-import Img, { FixedObject, FluidObject } from 'gatsby-image'
+import { FixedObject, FluidObject } from 'gatsby-image'
 
 import Baner from '../components/common/banner'
 import IndexLayout from '../layouts'
-import { Container, Grid } from '@material-ui/core'
+import AboutComp from '../components/About/about'
 
 type QueryProps = {
   data: {
@@ -30,16 +30,11 @@ const About: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
   return (
     <IndexLayout>
       <Baner title="About" fluidObject={data.strapiAbout.banerImg.childImageSharp.fluid} />
-      <Container className="About">
-        <Grid container>
-          <Grid item md={6}>
-            <p>{data.strapiAbout.firstTyphography}</p>
-          </Grid>
-          <Grid item md={6}>
-            <Img fixed={data.strapiAbout.avatar.childImageSharp.fixed} />
-          </Grid>
-        </Grid>
-      </Container>
+      <AboutComp
+        firstTyphography={data.strapiAbout.firstTyphography}
+        avatar={data.strapiAbout.avatar.childImageSharp.fixed}
+        restOfDescription={data.strapiAbout.restOfDescription}
+      />
     </IndexLayout>
   )
 }
