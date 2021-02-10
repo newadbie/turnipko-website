@@ -29,11 +29,10 @@ const Media: FC = () => {
     }
   `
   const data: StaticQuery = useStaticQuery(query)
-  console.log(data)
   return (
     <>
-      <p>{data.strapiContact.contactText}</p>
-      <p>
+      <p style={{ marginBottom: '10px' }}>{data.strapiContact.contactText}</p>
+      <p style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px', alignItems: 'center' }}>
         <PhoneIcon />
         &nbsp; {data.strapiContact.phoneNumber}
       </p>

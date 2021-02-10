@@ -7,7 +7,7 @@
   width: 577px;
 }
 
-p {
+.About p {
   font-style: normal;
   padding: 0 7.5px;
   margin-bottom: 40px;
@@ -17,7 +17,7 @@ p {
   font-weight: 400;
 }
 
-p:last-child {
+.About p:last-child {
   margin-bottom: 0;
 }
 
@@ -40,10 +40,6 @@ p:last-child {
   text-align: right;
   padding-right: 0;
 }
-/*
-.Text p {
-  margin-bottom: 0;
-} */
 
 .Avatar img {
   border-radius: 100%;
