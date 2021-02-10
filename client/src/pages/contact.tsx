@@ -4,13 +4,26 @@ import { PageProps, graphql } from 'gatsby'
 
 import Baner from '../components/common/banner'
 import IndexLayout from '../layouts'
+
 import ContactComp from '../components/common/contact/contact'
 
-const Contact: FC<PageProps> = ({ data }: any) => {
+import { ContactCommonProps } from '../types'
+
+type QueryPage = {
+  data: {
+    strapiContact: ContactCommonProps
+  }
+}
+
+const Contact: FC<PageProps & QueryPage> = ({ data }: QueryPage) => {
   return (
     <IndexLayout>
-      <Baner title="Contact" fluidObject={data.placeholderImage.childImageSharp.fluid} />
-      <ContactComp hideHeader />
+      <Baner
+        title={data.strapiContact.ContactBaner.banerText}
+        fluidObject={data.strapiContact.ContactBaner.backgroundImg.childImageSharp.fluid}
+      />
+      {/* @ts-ignore */}
+      <ContactComp hideHeader media={data.contactInfo} />
     </IndexLayout>
   )
 }
@@ -19,10 +32,21 @@ export default Contact
 
 export const PageQuery = graphql`
   query {
-    placeholderImage: file(relativePath: { eq: "PenBG.png" }) {
-      childImageSharp {
-        fluid(maxHeight: 1400) {
-          ...GatsbyImageSharpFluid
+    strapiContact {
+      facebookURL
+      instagramURL
+      phoneNumber
+      email
+      contactText
+
+      ContactBaner {
+        banerText
+        backgroundImg {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }

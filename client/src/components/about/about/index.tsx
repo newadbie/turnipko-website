@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { Container, Grid } from '@material-ui/core'
+import { Container } from '@material-ui/core'
 import Img, { FixedObject } from 'gatsby-image'
 
 import classes from './about.module.css'

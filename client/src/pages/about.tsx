@@ -7,29 +7,18 @@ import Baner from '../components/common/banner'
 import IndexLayout from '../layouts'
 import AboutComp from '../components/About/about'
 
-type QueryProps = {
+import { AboutPageProps } from '../types'
+
+interface QueryPage {
   data: {
-    strapiAbout: {
-      restOfDescription: string
-      firstTyphography: string
-      avatar: {
-        childImageSharp: {
-          fixed: FixedObject
-        }
-      }
-      banerImg: {
-        childImageSharp: {
-          fluid: FluidObject
-        }
-      }
-    }
+    strapiAbout: AboutPageProps
   }
 }
 
-const About: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
+const About: FC<PageProps & QueryPage> = ({ data }: QueryPage) => {
   return (
     <IndexLayout>
-      <Baner title="About" fluidObject={data.strapiAbout.banerImg.childImageSharp.fluid} />
+      <Baner title="About" fluidObject={data.strapiAbout.AboutBaner.backgroundImg.childImageSharp.fluid} />
       <AboutComp
         firstTyphography={data.strapiAbout.firstTyphography}
         avatar={data.strapiAbout.avatar.childImageSharp.fixed}
@@ -44,19 +33,23 @@ export default About
 export const PageQuery = graphql`
   query {
     strapiAbout {
-      banerImg {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
       restOfDescription
       firstTyphography
       avatar {
         childImageSharp {
           fixed(width: 217, height: 217) {
             ...GatsbyImageSharpFixed
+          }
+        }
+      }
+
+      AboutBaner {
+        banerText
+        backgroundImg {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }

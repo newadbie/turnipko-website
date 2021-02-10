@@ -6,25 +6,21 @@ import { FluidObject } from 'gatsby-image'
 import Baner from '../components/common/banner'
 import IndexLayout from '../layouts'
 
+import { PricingPageProps } from '../types'
+
 type QueryProps = {
   data: {
-    strapiPricing: {
-      banerImg: {
-        childImageSharp: {
-          fluid: FluidObject
-        }
-      }
-    }
+    strapiPricing: PricingPageProps
   }
 }
 
-const Pricing: FC<PageProps & QueryProps> = (data: QueryProps) => {
+const Pricing: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
   return (
     <IndexLayout>
       <Baner
-        title="Pricing"
-        subTitle="Click on product to see details"
-        fluidObject={data.data.strapiPricing.banerImg.childImageSharp.fluid}
+        title={data.strapiPricing.PricingBaner.banerText}
+        subTitle={data.strapiPricing.PricingBaner.banerSubText}
+        fluidObject={data.strapiPricing.PricingBaner.backgroundImg.childImageSharp.fluid}
       />
     </IndexLayout>
   )
@@ -35,10 +31,14 @@ export default Pricing
 export const PageQuery = graphql`
   query {
     strapiPricing {
-      banerImg {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+      PricingBaner {
+        banerText
+        banerSubText
+        backgroundImg {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }

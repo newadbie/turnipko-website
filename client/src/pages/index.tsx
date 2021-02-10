@@ -7,20 +7,29 @@ import Latest from '../components/Portfolio/latest'
 import About from '../components/Portfolio/about'
 import Contact from '../components/common/contact/contact'
 
-const IndexPage: FC<PageProps> = ({ data }: any) => {
+import { PortfolioPageProps, AboutPageProps } from '../types'
+
+interface QueryProps {
+  data: {
+    strapiPortfolio: PortfolioPageProps
+    strapiAbout: AboutPageProps
+  }
+}
+
+const IndexPage: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
   return (
     <IndexLayout>
       <Header
-        headerTitle={data.strapiPortfolio.BanerTitle}
-        headerSubTitle={data.strapiPortfolio.BanerSubTitle}
-        contactButtonText={data.strapiPortfolio.ContactButtonText}
-        showContactButton={data.strapiPortfolio.ShowContactButton}
-        fluidObject={data.strapiPortfolio.BanerBackground.childImageSharp.fluid}
+        headerTitle={data.strapiPortfolio.PortfolioBaner.banerText}
+        headerSubTitle={data.strapiPortfolio.PortfolioBaner.banerSubText ? data.strapiPortfolio.PortfolioBaner.banerSubText : ''}
+        contactButtonText={data.strapiPortfolio.contactButtonText}
+        showContactButton={data.strapiPortfolio.showContactButton}
+        fluidObject={data.strapiPortfolio.PortfolioBaner.backgroundImg.childImageSharp.fluid}
       />
       <Latest
-        headerText={data.strapiPortfolio.LatestPhotos}
-        anchorText={data.strapiPortfolio.AnchorText}
-        encourageText={data.strapiPortfolio.EncourageText}
+        headerText={data.strapiPortfolio.latestPhotos}
+        anchorText={data.strapiPortfolio.anchorText}
+        encourageText={data.strapiPortfolio.encourageText}
       />
       <About typhographyText={data.strapiAbout.firstTyphography} avatarFixed={data.strapiAbout.avatar.childImageSharp.fixed} />
       <Contact />
@@ -33,25 +42,27 @@ export default IndexPage
 export const PageQuery = graphql`
   query {
     strapiPortfolio {
-      BanerTitle
-      BanerSubTitle
-      LatestPhotos
-      EncourageText
-      AnchorText
-      ShowContactButton
-      ContactButtonText
-      BanerBackground {
-        childImageSharp {
-          fluid(maxHeight: 1400) {
-            ...GatsbyImageSharpFluid
+      showContactButton
+      latestPhotos
+      encourageText
+      anchorText
+      contactButtonText
+      PortfolioBaner {
+        banerText
+        banerSubText
+        backgroundImg {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
     }
+
     strapiAbout {
       firstTyphography
       restOfDescription
-
       avatar {
         childImageSharp {
           fixed(width: 217, height: 217) {

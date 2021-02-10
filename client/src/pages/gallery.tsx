@@ -7,25 +7,21 @@ import Baner from '../components/common/banner'
 import GalleryComp from '../components/Gallery/gallery'
 import IndexLayout from '../layouts'
 
+import { GalleryPageProps } from '../types'
+
 type QueryProps = {
   data: {
-    strapiGallery: {
-      banerImg: {
-        childImageSharp: {
-          fluid: FluidObject
-        }
-      }
-    }
+    strapiGallery: GalleryPageProps
   }
 }
 
-const Gallery: FC<PageProps & QueryProps> = (data: QueryProps) => {
+const Gallery: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
   return (
     <IndexLayout>
       <Baner
-        title="Gallery"
-        fluidObject={data.data.strapiGallery.banerImg.childImageSharp.fluid}
-        subTitle="Click on the picture to visit specific gallery"
+        title={data.strapiGallery.GalleryBaner.banerText}
+        fluidObject={data.strapiGallery.GalleryBaner.backgroundImg.childImageSharp.fluid}
+        subTitle={data.strapiGallery.GalleryBaner.banerSubText}
       />
       <GalleryComp />
     </IndexLayout>
@@ -37,10 +33,14 @@ export default Gallery
 export const PageQuery = graphql`
   query {
     strapiGallery {
-      banerImg {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+      GalleryBaner {
+        banerText
+        banerSubText
+        backgroundImg {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
