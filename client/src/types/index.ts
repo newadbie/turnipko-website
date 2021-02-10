@@ -43,6 +43,25 @@ export type PortfolioPageProps = {
   PortfolioBaner: BanerProps
 }
 
+export enum Currencies {
+  USD = 'USD',
+  EURO = 'EURO',
+  PLN = 'PLN'
+}
+
+export type PhotoService = {
+  title: string
+  price: number
+  offert: string
+  backgroundImg: {
+    childImageSharp: {
+      fixed: FixedObject
+    }
+  }
+}
+
 export type PricingPageProps = {
+  currency: Currencies
+  Services: Array<PhotoService>
   PricingBaner: BanerProps
 }
