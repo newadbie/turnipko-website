@@ -8,11 +8,13 @@ import classes from './pricing.module.css'
 
 interface Props {
   currency: Currencies.EURO | Currencies.PLN | Currencies.USD
+  selectService: (newService: PhotoService) => void
 }
 
-const Service: FC<PhotoService & Props> = ({ title, price, offert, backgroundImg, currency }) => {
+const Service: FC<PhotoService & Props> = ({ title, price, offert, backgroundImg, currency, selectService }) => {
+  const currentService: PhotoService = { title, price, offert, backgroundImg }
   return (
-    <div className={classes.Service}>
+    <div className={classes.Service} onClick={() => selectService(currentService)}>
       <div className={classes.CartInner}>
         <div className={classes.CartFront}>
           <div className={classes.Background}>

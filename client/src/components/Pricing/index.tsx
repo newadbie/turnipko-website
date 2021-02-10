@@ -1,4 +1,4 @@
-import { Container, Grid } from '@material-ui/core'
+import { Container } from '@material-ui/core'
 import React, { FC } from 'react'
 
 import { PhotoService, Currencies } from '../../types'
@@ -9,18 +9,19 @@ import Service from './service'
 interface Props {
   currency: Currencies
   services: Array<PhotoService>
+  selectService: (newService: PhotoService) => void
 }
 
-const Pricing: FC<Props> = ({ services, currency }) => {
+const Pricing: FC<Props> = ({ services, currency, selectService }) => {
   const servicesInRow: number = 2
 
   const rows = [...Array(Math.ceil(services.length / servicesInRow))]
   const serviceRows = rows.map((_, id) => services.slice(id * servicesInRow, id * servicesInRow + servicesInRow))
-  console.log(serviceRows)
+
   const content = serviceRows.map((rowContent, id) => (
     <div key={id} className={classes.Row}>
       {rowContent.map(service => (
-        <Service currency={currency} key={service.title} {...service} />
+        <Service selectService={selectService} currency={currency} key={service.title} {...service} />
       ))}
     </div>
   ))

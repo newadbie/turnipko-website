@@ -1,0 +1,56 @@
+.Modal {
+  height: 100vh;
+  width: 100vw;
+}
+
+.Background {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.Background::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: rgba(250, 250, 250, 0.75);
+}
+
+.Content {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  padding: 100px;
+}
+
+.Content h1 {
+  text-align: center;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 64px;
+  padding-bottom: 23.71px;
+}
+
+.Text {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.Text ul {
+  margin: 0;
+  padding: 0;
+}
+
+.Text ul li {
+  list-style: none;
+  font-size: 64px;
+  padding: 10px;
+}

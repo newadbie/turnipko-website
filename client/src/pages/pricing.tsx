@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 
 import { PageProps, graphql } from 'gatsby'
 
@@ -7,7 +7,8 @@ import IndexLayout from '../layouts'
 
 import PricingComp from '../components/Pricing'
 
-import { PricingPageProps } from '../types'
+import { PricingPageProps, PhotoService } from '../types'
+import ServiceModal from '../components/Pricing/serviceModal'
 
 type QueryProps = {
   data: {
@@ -16,6 +17,14 @@ type QueryProps = {
 }
 
 const Pricing: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [selectedPhotoService, selectPhotoService] = useState<PhotoService>()
+
+  const selectServiceHandler = (newService: PhotoService) => {
+    selectPhotoService(newService)
+    setIsOpen(true)
+  }
+
   const services = data.strapiPricing.Services
   return (
     <IndexLayout>
@@ -24,7 +33,13 @@ const Pricing: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
         subTitle={data.strapiPricing.PricingBaner.banerSubText}
         fluidObject={data.strapiPricing.PricingBaner.backgroundImg.childImageSharp.fluid}
       />
-      <PricingComp services={services} currency={data.strapiPricing.currency} />
+      <PricingComp selectService={selectServiceHandler} services={services} currency={data.strapiPricing.currency} />
+      <ServiceModal
+        currency={data.strapiPricing.currency}
+        isOpen={isOpen}
+        setOpen={setIsOpen}
+        photoService={selectedPhotoService ? selectedPhotoService : data.strapiPricing.Services[0]}
+      />
     </IndexLayout>
   )
 }
@@ -41,8 +56,11 @@ export const PageQuery = graphql`
         title
         backgroundImg {
           childImageSharp {
-            fixed {
+            fixed(width: 400, height: 370) {
               ...GatsbyImageSharpFixed
+            }
+            fluid {
+              ...GatsbyImageSharpFluid
             }
           }
         }

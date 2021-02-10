@@ -56,6 +56,7 @@ export type PhotoService = {
   backgroundImg: {
     childImageSharp: {
       fixed: FixedObject
+      fluid: FluidObject
     }
   }
 }
