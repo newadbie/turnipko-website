@@ -103,3 +103,9 @@
   font-size: 32px;
   padding-bottom: 23.71px;
 }
+
+@media (max-width: 960px) {
+  .Services {
+    width: 500px;
+  }
+}

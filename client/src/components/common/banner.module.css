@@ -51,3 +51,25 @@
   font-weight: normal;
   color: rgba(34, 34, 34, 0.5);
 }
+
+@media (max-width: 768px) {
+  .CommonBanner {
+    height: 301px;
+  }
+
+  .Background {
+    height: 301px;
+  }
+
+  .BackgroundImage {
+    height: 301px;
+  }
+
+  .Background::after {
+    height: 301px;
+  }
+
+  .Content {
+    height: 301px;
+  }
+}

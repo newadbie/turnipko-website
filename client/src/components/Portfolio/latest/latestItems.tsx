@@ -5,6 +5,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Gallery from 'react-photo-gallery'
 import Carousel, { ModalGateway, Modal } from 'react-images'
 
+import classes from './latest.module.css'
+
 type PhotoType = {
   src: string
   height: number
@@ -67,7 +69,7 @@ const LatestItems: FC = () => {
     .slice(0, 3) // We catch reversed array because it is by default sorted by DESC, to show recent photos we have to reverse array right here!
 
   return (
-    <Container style={{ marginBottom: '80px' }}>
+    <Container className={classes.Container}>
       <Gallery photos={allPhotos} onClick={openLightBox} />
       <ModalGateway>
         {viewerIsOpen ? (

@@ -17,3 +17,9 @@
 .Link:hover {
   text-decoration: none;
 }
+
+@media (max-width: 768px) {
+  .Link {
+    margin-right: 20px;
+  }
+}

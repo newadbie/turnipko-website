@@ -1,6 +1,5 @@
 .Header {
   height: 400px;
-  /* background-color: red; */
   overflow: hidden;
   position: relative;
 }
@@ -46,4 +45,19 @@
   color: rgba(34, 34, 34, 0.5);
   line-height: 20px;
   font-weight: normal;
+}
+
+@media (max-width: 768px) {
+  .Header,
+  .Baner::after {
+    height: 301px;
+  }
+
+  .Title {
+    font-size: 64px;
+  }
+
+  .Text {
+    margin-bottom: 40px;
+  }
 }

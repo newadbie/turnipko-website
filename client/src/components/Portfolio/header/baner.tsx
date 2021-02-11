@@ -1,5 +1,6 @@
-import React, { FC } from 'react'
-import Img, { FluidObject } from 'gatsby-image'
+import { FC } from 'react'
+import { FluidObject } from 'gatsby-image'
+import Img from 'gatsby-image/withIEPolyfill'
 
 import classes from './header.module.css'
 
@@ -10,7 +11,7 @@ interface Props {
 const Baner: FC<Props> = ({ fluidObject }) => {
   return (
     <div className={classes.Baner}>
-      <Img fluid={fluidObject} style={{ minHeight: '400px' }} />
+      <Img fluid={fluidObject} style={{ minHeight: '400px' }} objectPosition="70% 50%" className={classes.BanerBackground} />
     </div>
   )
 }
