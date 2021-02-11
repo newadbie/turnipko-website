@@ -16,10 +16,11 @@ module.exports = {
     }
   },
   plugins: [
+    `gatsby-plugin-material-ui`,
     {
       resolve: 'gatsby-source-strapi',
       options: {
-        apiURL: 'http://localhost:1337',
+        apiURL: `${process.env.GATSBY_API_URL}`,
         singleTypes: ['portfolio', 'about', 'gallery', 'pricing', 'contact'],
         contentTypes: ['album', 'nav', 'category'],
         queryLimit: 1000

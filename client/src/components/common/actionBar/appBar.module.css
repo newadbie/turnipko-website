@@ -1,5 +1,7 @@
 .Wrapper {
   height: 120px;
+  display: block;
+  position: relative;
 }
 
 .AppBar {
