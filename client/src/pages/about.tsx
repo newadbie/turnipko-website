@@ -1,11 +1,10 @@
 import React, { FC } from 'react'
 
 import { PageProps, graphql } from 'gatsby'
-import { FixedObject, FluidObject } from 'gatsby-image'
 
 import Baner from '../components/common/banner'
 import IndexLayout from '../layouts'
-import AboutComp from '../components/About/about'
+import AboutComp from '../components/AboutComp'
 
 import { AboutPageProps } from '../types'
 
@@ -18,10 +17,10 @@ interface QueryPage {
 const About: FC<PageProps & QueryPage> = ({ data }: QueryPage) => {
   return (
     <IndexLayout>
-      <Baner title="About" fluidObject={data.strapiAbout.AboutBaner.backgroundImg.childImageSharp.fluid} />
+      <Baner title="About" fluidObject={data.strapiAbout.AboutBaner.backgroundImg.localFile.childImageSharp.fluid} />
       <AboutComp
         firstTyphography={data.strapiAbout.firstTyphography}
-        avatar={data.strapiAbout.avatar.childImageSharp.fixed}
+        avatar={data.strapiAbout.avatar.localFile.childImageSharp.fixed}
         restOfDescription={data.strapiAbout.restOfDescription}
       />
     </IndexLayout>
@@ -36,9 +35,11 @@ export const PageQuery = graphql`
       restOfDescription
       firstTyphography
       avatar {
-        childImageSharp {
-          fixed(width: 217, height: 217) {
-            ...GatsbyImageSharpFixed
+        localFile {
+          childImageSharp {
+            fixed(width: 217, height: 217) {
+              ...GatsbyImageSharpFixed
+            }
           }
         }
       }
@@ -46,9 +47,11 @@ export const PageQuery = graphql`
       AboutBaner {
         banerText
         backgroundImg {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }

@@ -11,7 +11,7 @@ interface Props {
   avatarFixed: FixedObject
 }
 
-const About: FC<Props> = ({ typhographyText, avatarFixed }) => {
+const AboutComp: FC<Props> = ({ typhographyText, avatarFixed }) => {
   return (
     <section className={classes.About}>
       <Container>
@@ -32,4 +32,4 @@ const About: FC<Props> = ({ typhographyText, avatarFixed }) => {
   )
 }
 
-export default About
+export default AboutComp

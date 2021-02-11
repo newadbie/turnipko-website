@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 import Img from 'gatsby-image'
 
@@ -18,7 +18,7 @@ const Service: FC<PhotoService & Props> = ({ title, price, offert, backgroundImg
       <div className={classes.CartInner}>
         <div className={classes.CartFront}>
           <div className={classes.Background}>
-            <Img fixed={backgroundImg.childImageSharp.fixed} />
+            <Img fixed={backgroundImg.localFile.childImageSharp.fixed} />
           </div>
           <div className={classes.Content}>
             <h1>

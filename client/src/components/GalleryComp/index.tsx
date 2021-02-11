@@ -14,8 +14,10 @@ type QueryType = {
           name: string
           id: string
           photo: {
-            childImageSharp: {
-              fluid: FluidObject
+            localFile: {
+              childImageSharp: {
+                fluid: FluidObject
+              }
             }
           }
         }
@@ -24,7 +26,7 @@ type QueryType = {
   }
 }
 
-const Gallery: FC = () => {
+const GalleryComp: FC = () => {
   const data: QueryType = useStaticQuery(graphql`
     query {
       allStrapiCategory {
@@ -33,9 +35,11 @@ const Gallery: FC = () => {
             name
             id
             photo {
-              childImageSharp {
-                fluid(maxWidth: 500) {
-                  ...GatsbyImageSharpFluid
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 500) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
             }
@@ -48,7 +52,7 @@ const Gallery: FC = () => {
   const categoryImgs = data.allStrapiCategory.edges.map(category => (
     <Grid item xs={10} sm={6} md={4} className={classes.Category}>
       <Link to={`/gallery/${category.node.name.replace(/\s+/g, '-')}`}>
-        <Img fluid={category.node.photo.childImageSharp.fluid} className={classes.Item} />
+        <Img fluid={category.node.photo.localFile.childImageSharp.fluid} className={classes.Item} />
         <div className={classes.TextContainer}>
           <span>{category.node.name}</span>
         </div>
@@ -67,4 +71,4 @@ const Gallery: FC = () => {
   )
 }
 
-export default Gallery
+export default GalleryComp

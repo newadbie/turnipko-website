@@ -8,7 +8,7 @@ import './layout.css'
 import LayoutRoot from '../components/LayoutRoot'
 import LayoutMain from '../components/LayoutMain'
 import AppBar from '../components/common/actionBar/appBar'
-import Footer from '../components/common/footer/Footer'
+import Footer from '../components/common/footer/footer'
 
 interface StaticQueryProps {
   site: {

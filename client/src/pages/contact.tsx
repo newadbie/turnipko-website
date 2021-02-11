@@ -20,7 +20,7 @@ const Contact: FC<PageProps & QueryPage> = ({ data }: QueryPage) => {
     <IndexLayout>
       <Baner
         title={data.strapiContact.ContactBaner.banerText}
-        fluidObject={data.strapiContact.ContactBaner.backgroundImg.childImageSharp.fluid}
+        fluidObject={data.strapiContact.ContactBaner.backgroundImg.localFile.childImageSharp.fluid}
       />
       {/* @ts-ignore */}
       <ContactComp hideHeader media={data.contactInfo} />
@@ -42,9 +42,11 @@ export const PageQuery = graphql`
       ContactBaner {
         banerText
         backgroundImg {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }

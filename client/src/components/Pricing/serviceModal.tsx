@@ -32,7 +32,7 @@ const ServiceModal: FC<Props> = ({ isOpen, setOpen, photoService, currency }) =>
       <Fade in={isOpen} timeout={350}>
         <Container style={{ position: 'relative', outline: 'none' }}>
           <div className={classes.Background}>
-            <Img fluid={photoService.backgroundImg.childImageSharp.fluid} className={classes.BackgroundImg} />
+            <Img fluid={photoService.backgroundImg.localFile.childImageSharp.fluid} className={classes.BackgroundImg} />
           </div>
           <div className={classes.Content}>
             <h1>

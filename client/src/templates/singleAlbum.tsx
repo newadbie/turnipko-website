@@ -26,8 +26,10 @@ type NodeType = {
     category: {
       name: string
       photo: {
-        childImageSharp: {
-          fluid: FluidObject
+        localFile: {
+          childImageSharp: {
+            fluid: FluidObject
+          }
         }
       }
     }
@@ -81,7 +83,7 @@ const SingleAlbum = ({ data }: QueryType) => {
     <IndexLayout>
       {categoryData ? (
         <>
-          <Baner title={categoryData.name} fluidObject={categoryData.photo.childImageSharp.fluid} />
+          <Baner title={categoryData.name} fluidObject={categoryData.photo.localFile.childImageSharp.fluid} />
           <Container className={classes.SingleAlbum}>
             {photos !== undefined ? (
               <>
@@ -103,14 +105,6 @@ const SingleAlbum = ({ data }: QueryType) => {
             ) : (
               ''
             )}
-
-            {/* <GridList cols={3}>
-          {photos?.map((photo, index) => (
-            <GridListTile rows={photo.rows} key={index}>
-              <img src={photo.url} />
-            </GridListTile>
-          ))}
-        </GridList> */}
           </Container>
         </>
       ) : (
@@ -130,9 +124,11 @@ export const query = graphql`
           category {
             name
             photo {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
+              localFile {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
             }

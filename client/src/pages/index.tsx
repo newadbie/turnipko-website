@@ -24,14 +24,14 @@ const IndexPage: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
         headerSubTitle={data.strapiPortfolio.PortfolioBaner.banerSubText ? data.strapiPortfolio.PortfolioBaner.banerSubText : ''}
         contactButtonText={data.strapiPortfolio.contactButtonText}
         showContactButton={data.strapiPortfolio.showContactButton}
-        fluidObject={data.strapiPortfolio.PortfolioBaner.backgroundImg.childImageSharp.fluid}
+        fluidObject={data.strapiPortfolio.PortfolioBaner.backgroundImg.localFile.childImageSharp.fluid}
       />
       <Latest
         headerText={data.strapiPortfolio.latestPhotos}
         anchorText={data.strapiPortfolio.anchorText}
         encourageText={data.strapiPortfolio.encourageText}
       />
-      <About typhographyText={data.strapiAbout.firstTyphography} avatarFixed={data.strapiAbout.avatar.childImageSharp.fixed} />
+      <About typhographyText={data.strapiAbout.firstTyphography} avatarFixed={data.strapiAbout.avatar.localFile.childImageSharp.fixed} />
       <Contact />
     </IndexLayout>
   )
@@ -51,9 +51,11 @@ export const PageQuery = graphql`
         banerText
         banerSubText
         backgroundImg {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }
@@ -64,9 +66,11 @@ export const PageQuery = graphql`
       firstTyphography
       restOfDescription
       avatar {
-        childImageSharp {
-          fixed(width: 217, height: 217) {
-            ...GatsbyImageSharpFixed
+        localFile {
+          childImageSharp {
+            fixed(width: 217, height: 217) {
+              ...GatsbyImageSharpFixed
+            }
           }
         }
       }

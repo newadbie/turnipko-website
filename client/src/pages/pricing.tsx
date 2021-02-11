@@ -31,7 +31,7 @@ const Pricing: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
       <Baner
         title={data.strapiPricing.PricingBaner.banerText}
         subTitle={data.strapiPricing.PricingBaner.banerSubText}
-        fluidObject={data.strapiPricing.PricingBaner.backgroundImg.childImageSharp.fluid}
+        fluidObject={data.strapiPricing.PricingBaner.backgroundImg.localFile.childImageSharp.fluid}
       />
       <PricingComp selectService={selectServiceHandler} services={services} currency={data.strapiPricing.currency} />
       <ServiceModal
@@ -55,12 +55,14 @@ export const PageQuery = graphql`
         price
         title
         backgroundImg {
-          childImageSharp {
-            fixed(width: 400, height: 370) {
-              ...GatsbyImageSharpFixed
-            }
-            fluid {
-              ...GatsbyImageSharpFluid
+          localFile {
+            childImageSharp {
+              fixed(width: 400, height: 370) {
+                ...GatsbyImageSharpFixed
+              }
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }
@@ -70,9 +72,11 @@ export const PageQuery = graphql`
         banerText
         banerSubText
         backgroundImg {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }

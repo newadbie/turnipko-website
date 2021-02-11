@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { PageProps, graphql } from 'gatsby'
 
 import Baner from '../components/common/banner'
-import GalleryComp from '../components/Gallery/gallery'
+import GalleryComp from '../components/GalleryComp'
 import IndexLayout from '../layouts'
 
 import { GalleryPageProps } from '../types'
@@ -19,7 +19,7 @@ const Gallery: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
     <IndexLayout>
       <Baner
         title={data.strapiGallery.GalleryBaner.banerText}
-        fluidObject={data.strapiGallery.GalleryBaner.backgroundImg.childImageSharp.fluid}
+        fluidObject={data.strapiGallery.GalleryBaner.backgroundImg.localFile.childImageSharp.fluid}
         subTitle={data.strapiGallery.GalleryBaner.banerSubText}
       />
       <GalleryComp />
@@ -36,9 +36,11 @@ export const PageQuery = graphql`
         banerText
         banerSubText
         backgroundImg {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }

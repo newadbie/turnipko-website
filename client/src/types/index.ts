@@ -4,8 +4,10 @@ export type BanerProps = {
   banerText: string
   banerSubText?: string
   backgroundImg: {
-    childImageSharp: {
-      fluid: FluidObject
+    localFile: {
+      childImageSharp: {
+        fluid: FluidObject
+      }
     }
   }
 }
@@ -23,8 +25,10 @@ export type AboutPageProps = {
   firstTyphography: string
   restOfDescription: string
   avatar: {
-    childImageSharp: {
-      fixed: FixedObject
+    localFile: {
+      childImageSharp: {
+        fixed: FixedObject
+      }
     }
   }
   AboutBaner: BanerProps
@@ -54,9 +58,11 @@ export type PhotoService = {
   price: number
   offert: string
   backgroundImg: {
-    childImageSharp: {
-      fixed: FixedObject
-      fluid: FluidObject
+    localFile: {
+      childImageSharp: {
+        fixed: FixedObject
+        fluid: FluidObject
+      }
     }
   }
 }
