@@ -1,6 +1,5 @@
-.Services {
-  margin: 0 auto;
-  width: 880px;
+.Pricing {
+  padding: 60px 0;
 }
 
 .Service {
@@ -9,8 +8,9 @@
   perspective: 1000px;
   box-sizing: border-box;
   text-align: center;
+  padding: 20px;
+  overflow: hidden;
   height: 370px;
-  width: 400px;
   position: relative;
 }
 
@@ -19,8 +19,15 @@
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0);
 }
 
+.GatsbyImg {
+  width: 100%;
+  padding: 20px;
+
+  overflow: hidden;
+}
+
 .CartInner {
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3); */
   position: relative;
   width: 100%;
   height: 100%;
@@ -32,6 +39,7 @@
 .CartFront,
 .CartBack {
   position: absolute;
+  overflow: hidden;
   width: 100%;
   height: 100%;
   -webkit-backface-visibility: hidden;
@@ -70,19 +78,20 @@
   left: 0;
   z-index: -1;
   height: 370px;
-  width: 400px;
+  width: 100%;
   overflow: hidden;
   min-width: 100%;
 }
 
-.Background::after {
+.GatsbyImg::after {
   content: '';
   display: block;
   position: absolute;
   top: 0;
   left: 0;
   background-color: rgba(250, 250, 250, 0.75);
-  width: 400px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  width: 100%;
   height: 370px;
 }
 

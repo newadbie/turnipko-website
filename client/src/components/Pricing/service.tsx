@@ -18,7 +18,7 @@ const Service: FC<PhotoService & Props> = ({ title, price, offert, backgroundImg
       <div className={classes.CartInner}>
         <div className={classes.CartFront}>
           <div className={classes.Background}>
-            <Img fixed={backgroundImg.localFile.childImageSharp.fixed} />
+            <Img fixed={backgroundImg.localFile.childImageSharp.fixed} className={classes.GatsbyImg} />
           </div>
           <div className={classes.Content}>
             <h1>
