@@ -18,3 +18,24 @@
   justify-content: space-between;
   align-items: center;
 }
+
+/* .Mobile {
+  display: none;
+} */
+
+@media (max-width: 768px) {
+  .AppBar,
+  .Wrapper {
+    height: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .Desktop {
+    display: none !important;
+  }
+
+  .Mobile {
+    display: block;
+  }
+}

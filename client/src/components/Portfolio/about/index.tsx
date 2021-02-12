@@ -19,7 +19,7 @@ const AboutComp: FC<Props> = ({ typhographyText, avatarFixed }) => {
           <h1>About me</h1>
         </header>
         <section className={classes.Section}>
-          <div className={classes.Text} style={{ width: '280px' }}>
+          <div className={classes.Text}>
             <p>{typhographyText}</p>
             <a href="/about">
               <SlideButton text="Read more" className={classes.Button} />

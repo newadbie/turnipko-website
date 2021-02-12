@@ -16,7 +16,7 @@
 .Section {
   display: flex;
   justify-content: center;
-  height: 247px;
+  min-height: 247px;
 }
 
 .Button {
@@ -31,6 +31,7 @@
   border-radius: 100%;
 }
 .Text {
+  width: 280px;
   padding-top: 19px;
   text-align: right;
   word-wrap: wrap;
@@ -44,5 +45,27 @@
 @media (max-width: 768px) {
   .About {
     padding: 40px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .About {
+    padding: 20px 0;
+  }
+  .Header h1 {
+    font-size: 32px;
+  }
+  .Header {
+    margin-bottom: 30px;
+  }
+  .Section {
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+  .ImageWrapper {
+    margin: 0;
+  }
+  .Text {
+    text-align: center;
   }
 }

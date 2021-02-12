@@ -95,3 +95,18 @@
     font-size: 64px;
   }
 }
+
+@media (max-width: 600px) {
+  .Contact {
+    padding: 20px 0;
+  }
+  .Header h1 {
+    font-size: 32px;
+  }
+  .ContentWrapper {
+    flex-direction: column;
+  }
+  .MediaWrapper {
+    margin: 30px 0 0 0;
+  }
+}
