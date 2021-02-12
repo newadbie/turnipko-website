@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Link } from 'gatsby'
 
-import { NavItemProps } from '../../../types'
+import { NavItemProps } from '../../../../types'
 
 import classes from './items.module.css'
 

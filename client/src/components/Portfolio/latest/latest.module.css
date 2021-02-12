@@ -62,3 +62,17 @@
     margin-bottom: 40px;
   }
 }
+
+@media (max-width: 600px) {
+  .Container {
+    padding: 20px 0 !important;
+  }
+
+  .Header {
+    padding-bottom: 30px;
+  }
+
+  .Header h1 {
+    font-size: 32px;
+  }
+}

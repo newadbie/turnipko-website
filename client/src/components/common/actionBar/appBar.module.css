@@ -19,9 +19,9 @@
   align-items: center;
 }
 
-/* .Mobile {
-  display: none;
-} */
+.Mobile {
+  display: none !important;
+}
 
 @media (max-width: 768px) {
   .AppBar,
@@ -30,12 +30,16 @@
   }
 }
 
+.MText {
+  text-align: center;
+}
+
 @media (max-width: 600px) {
   .Desktop {
     display: none !important;
   }
 
   .Mobile {
-    display: block;
+    display: block !important;
   }
 }

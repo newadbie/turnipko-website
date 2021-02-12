@@ -2,8 +2,6 @@ import React, { FC } from 'react'
 
 import { FluidObject } from 'gatsby-image'
 
-import scrollTo from 'gatsby-plugin-smoothscroll'
-
 import Baner from './baner'
 
 import { Container } from '@material-ui/core'

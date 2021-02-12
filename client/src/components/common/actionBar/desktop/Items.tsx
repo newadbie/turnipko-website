@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Item from './item'
 
-import { navItems } from '../../../data'
+import { navItems } from '../../../../data'
 
 import classes from './items.module.css'
 
