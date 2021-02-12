@@ -36,7 +36,7 @@ const IndexPage: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
   )
 }
 
-export default IndexPage
+export default React.memo(IndexPage)
 
 export const PageQuery = graphql`
   query {

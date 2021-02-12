@@ -2,43 +2,36 @@ import React, { FC } from 'react'
 
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import { Container, Grid } from '@material-ui/core'
-import Img, { FluidObject } from 'gatsby-image'
+import Img from 'gatsby-image'
+
+import { CategoryProps } from '../../types'
 
 import classes from './gallery.module.css'
 
+type GroupProps = {
+  nodes: Array<CategoryProps>
+}
+
 type QueryType = {
-  allStrapiCategory: {
-    edges: [
-      {
-        node: {
-          name: string
-          id: string
-          photo: {
-            localFile: {
-              childImageSharp: {
-                fluid: FluidObject
-              }
-            }
-          }
-        }
-      }
-    ]
+  allStrapiAlbum: {
+    group: Array<GroupProps>
   }
 }
 
 const GalleryComp: FC = () => {
   const data: QueryType = useStaticQuery(graphql`
     query {
-      allStrapiCategory {
-        edges {
-          node {
-            name
-            id
-            photo {
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 500) {
-                    ...GatsbyImageSharpFluid
+      allStrapiAlbum {
+        group(field: category___id, limit: 1) {
+          nodes {
+            category {
+              name
+              photo {
+                localFile {
+                  childImageSharp {
+                    fixed(width: 378, height: 251) {
+                      ...GatsbyImageSharpFixed
+                    }
                   }
                 }
               }
@@ -49,12 +42,19 @@ const GalleryComp: FC = () => {
     }
   `)
 
-  const categoryImgs = data.allStrapiCategory.edges.map((category, index) => (
+  const allCategories: Array<CategoryProps> = []
+  data.allStrapiAlbum.group.map(gr => {
+    gr.nodes.map((node: any) => {
+      allCategories.push({ name: node.category.name, photo: node.category.photo })
+    })
+  })
+
+  const categoryImgs = allCategories.map((category, index) => (
     <Grid key={index} item xs={10} sm={6} md={4} className={classes.Category}>
-      <Link to={`/gallery/${category.node.name.replace(/\s+/g, '-')}`}>
-        <Img fluid={category.node.photo.localFile.childImageSharp.fluid} className={classes.Item} />
+      <Link to={`/gallery/${category.name.replace(/\s+/g, '-')}`}>
+        <Img fixed={category.photo.localFile.childImageSharp.fixed} className={classes.Item} />
         <div className={classes.TextContainer}>
-          <span>{category.node.name}</span>
+          <span>{category.name}</span>
         </div>
       </Link>
     </Grid>

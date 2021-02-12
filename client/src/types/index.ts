@@ -73,6 +73,40 @@ export type PricingPageProps = {
   PricingBaner: BanerProps
 }
 
+export type CategoryProps = {
+  name: string
+  photo: {
+    localFile: {
+      childImageSharp: {
+        fixed: FixedObject
+      }
+    }
+  }
+}
+
+export type SingleAlbumProps = {
+  node: {
+    category: CategoryProps
+    photos: [
+      {
+        url: string
+        width: number
+        height: number
+      }
+    ]
+  }
+}
+
+export type PhotoType = {
+  src: string
+  srcSet?: string | string[] | undefined
+  sizes?: string | string[] | undefined
+  width: number
+  height: number
+  alt?: string | undefined
+  key?: string | undefined
+}
+
 export type NavItemProps = {
   text: string
   to: string

@@ -8,45 +8,14 @@ import Gallery from 'react-photo-gallery'
 import Carousel, { Modal, ModalGateway } from 'react-images'
 
 import classes from './singleAlbum.module.css'
-import { FluidObject } from 'gatsby-image'
 import Baner from '../components/common/banner'
 
-type PhotoType = {
-  src: string
-  srcSet?: string | string[] | undefined
-  sizes?: string | string[] | undefined
-  width: number
-  height: number
-  alt?: string | undefined
-  key?: string | undefined
-}
-
-type NodeType = {
-  node: {
-    category: {
-      name: string
-      photo: {
-        localFile: {
-          childImageSharp: {
-            fluid: FluidObject
-          }
-        }
-      }
-    }
-    photos: [
-      {
-        url: string
-        width: number
-        height: number
-      }
-    ]
-  }
-}
+import { SingleAlbumProps, PhotoType } from '../types'
 
 type QueryType = {
   data: {
     allStrapiAlbum: {
-      edges: Array<NodeType>
+      edges: Array<SingleAlbumProps>
     }
   }
 }

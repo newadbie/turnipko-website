@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import { Container } from '@material-ui/core'
 
 import Img, { FixedObject } from 'gatsby-image'
-import { Link } from 'gatsby'
 
 import classes from './about.module.css'
 import SlideButton from '../../common/slideButton'

@@ -31,4 +31,4 @@ const Contact: FC<Props> = ({ hideHeader }) => {
   )
 }
 
-export default Contact
+export default React.memo(Contact)
