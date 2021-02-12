@@ -78,7 +78,6 @@ const SingleAlbum = ({ data }: QueryType) => {
       })
     })
   )
-
   return (
     <IndexLayout>
       {categoryData ? (
@@ -90,8 +89,9 @@ const SingleAlbum = ({ data }: QueryType) => {
                 <Gallery photos={photos.reverse()} onClick={openLightBox} />
                 <ModalGateway>
                   {viewerIsOpen ? (
-                    <Modal onClose={closeLightBox}>
+                    <Modal closeOnBackdropClick={false} onClose={closeLightBox}>
                       <Carousel
+                        modalProps={{ isFullscreen: true, allowFullscreen: true }}
                         currentIndex={currentImage}
                         views={photos.map(photo => ({
                           ...photo,

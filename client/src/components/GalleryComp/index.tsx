@@ -49,8 +49,8 @@ const GalleryComp: FC = () => {
     }
   `)
 
-  const categoryImgs = data.allStrapiCategory.edges.map(category => (
-    <Grid item xs={10} sm={6} md={4} className={classes.Category}>
+  const categoryImgs = data.allStrapiCategory.edges.map((category, index) => (
+    <Grid key={index} item xs={10} sm={6} md={4} className={classes.Category}>
       <Link to={`/gallery/${category.node.name.replace(/\s+/g, '-')}`}>
         <Img fluid={category.node.photo.localFile.childImageSharp.fluid} className={classes.Item} />
         <div className={classes.TextContainer}>

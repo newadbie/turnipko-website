@@ -13,8 +13,8 @@ interface Props {
 }
 
 const Pricing: FC<Props> = ({ services, currency, selectService }) => {
-  const content = services.map(service => (
-    <Grid item xs={12} md={6}>
+  const content = services.map((service, index) => (
+    <Grid item xs={12} md={6} key={index}>
       <Service selectService={selectService} currency={currency} key={service.title} {...service} />
     </Grid>
   ))

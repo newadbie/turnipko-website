@@ -20,3 +20,7 @@ p {
 #___gatsby {
   overflow: hidden;
 }
+
+.react-images__blanket {
+  background-color: black !important;
+}
