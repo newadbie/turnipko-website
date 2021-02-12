@@ -11,7 +11,7 @@ interface Props {
 
 const Contact: FC<Props> = ({ hideHeader }) => {
   return (
-    <section className={classes.Contact}>
+    <section className={classes.Contact} id="contact">
       <Container>
         {hideHeader ? null : (
           <header className={classes.Header}>

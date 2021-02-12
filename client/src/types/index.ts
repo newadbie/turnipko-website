@@ -72,3 +72,8 @@ export type PricingPageProps = {
   Services: Array<PhotoService>
   PricingBaner: BanerProps
 }
+
+export type NavItem = {
+  text: string,
+  to: string,
+}
