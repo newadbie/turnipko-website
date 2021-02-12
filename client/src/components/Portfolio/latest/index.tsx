@@ -1,8 +1,9 @@
-import { Container } from '@material-ui/core'
 import React, { FC } from 'react'
+import { Link } from 'gatsby'
 
 import LatestItems from './latestItems'
 
+import { Container } from '@material-ui/core'
 import classes from './latest.module.css'
 
 interface Props {
@@ -20,7 +21,9 @@ const Latest: FC<Props> = ({ encourageText, anchorText, headerText }) => {
       <LatestItems />
       <section className={classes.Section}>
         <h2>{encourageText}</h2>
-        <h3>{anchorText}</h3>
+        <h3>
+          <Link to="/gallery">{anchorText}</Link>
+        </h3>
       </section>
     </Container>
   )

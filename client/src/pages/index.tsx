@@ -5,7 +5,7 @@ import IndexLayout from '../layouts'
 import Header from '../components/Portfolio/header'
 import Latest from '../components/Portfolio/latest'
 import About from '../components/Portfolio/about'
-import Contact from '../components/common/contact/contact'
+import Contact from '../components/Portfolio/contact/contact'
 
 import { PortfolioPageProps, AboutPageProps } from '../types'
 
@@ -22,7 +22,6 @@ const IndexPage: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
       <Header
         headerTitle={data.strapiPortfolio.PortfolioBaner.banerText}
         headerSubTitle={data.strapiPortfolio.PortfolioBaner.banerSubText ? data.strapiPortfolio.PortfolioBaner.banerSubText : ''}
-        contactButtonText={data.strapiPortfolio.contactButtonText}
         showContactButton={data.strapiPortfolio.showContactButton}
         fluidObject={data.strapiPortfolio.PortfolioBaner.backgroundImg.localFile.childImageSharp.fluid}
       />

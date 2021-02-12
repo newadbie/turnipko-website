@@ -16,6 +16,7 @@ module.exports = {
     }
   },
   plugins: [
+    `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-material-ui`,
     {
       resolve: 'gatsby-source-strapi',

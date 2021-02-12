@@ -1,6 +1,6 @@
-import { FluidObject } from 'gatsby-image'
-import React, { FC } from 'react'
-import Img from 'gatsby-image'
+import { FC } from 'react'
+
+import Img, { FluidObject } from 'gatsby-image'
 
 import classes from './banner.module.css'
 
@@ -10,7 +10,7 @@ interface Props {
   fluidObject: FluidObject
 }
 
-// This banner is common banner with other pages than homepage.
+// This banner is a component for every page different than landing page
 const Baner: FC<Props> = ({ title, subTitle, fluidObject }) => {
   return (
     <header className={classes.CommonBanner}>

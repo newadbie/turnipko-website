@@ -73,7 +73,8 @@ export type PricingPageProps = {
   PricingBaner: BanerProps
 }
 
-export type NavItem = {
-  text: string,
-  to: string,
+export type NavItemProps = {
+  text: string
+  to: string
+  action?: () => void
 }

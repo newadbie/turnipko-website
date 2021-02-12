@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { Container } from '@material-ui/core'
 
 import Img, { FixedObject } from 'gatsby-image'
+import { Link } from 'gatsby'
 
 import classes from './about.module.css'
 import SlideButton from '../../common/slideButton'
@@ -21,7 +22,9 @@ const AboutComp: FC<Props> = ({ typhographyText, avatarFixed }) => {
         <section className={classes.Section}>
           <div className={classes.Text} style={{ width: '280px' }}>
             <p>{typhographyText}</p>
-            <SlideButton text="Read more" className={classes.Button} />
+            <a href="/about">
+              <SlideButton text="Read more" className={classes.Button} />
+            </a>
           </div>
           <div className={classes.ImageWrapper}>
             <Img fixed={avatarFixed} className={classes.Image} />

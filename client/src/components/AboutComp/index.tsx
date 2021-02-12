@@ -13,7 +13,7 @@ interface Props {
 
 const About: FC<Props> = ({ firstTyphography, restOfDescription, avatar }) => {
   return (
-    <Container className={classes.About}>
+    <Container className={classes.About} id="about">
       <div className={classes.Wrapper}>
         <div className={classes.FirstRow}>
           <div className={classes.Text}>

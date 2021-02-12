@@ -1,7 +1,10 @@
 import React, { FC } from 'react'
 
-import Baner from './baner'
 import { FluidObject } from 'gatsby-image'
+
+import scrollTo from 'gatsby-plugin-smoothscroll'
+
+import Baner from './baner'
 
 import { Container } from '@material-ui/core'
 import SlideButton from '../../common/slideButton'
@@ -13,10 +16,9 @@ interface Props {
   headerTitle: string
   headerSubTitle: string
   showContactButton: boolean
-  contactButtonText: string
 }
 
-const Header: FC<Props> = ({ fluidObject, showContactButton, headerTitle, headerSubTitle, contactButtonText }) => {
+const Header: FC<Props> = ({ fluidObject, showContactButton, headerTitle, headerSubTitle }) => {
   return (
     <header className={classes.Header}>
       <Baner fluidObject={fluidObject} />
@@ -26,7 +28,7 @@ const Header: FC<Props> = ({ fluidObject, showContactButton, headerTitle, header
             <h1 className={classes.Title}>{headerTitle}</h1>
             <h2 className={classes.Subtitle}>{headerSubTitle}</h2>
           </div>
-          {showContactButton ? <SlideButton text={contactButtonText} /> : null}
+          {showContactButton ? <SlideButton text="Contact me" action={() => scrollTo('#contact')} /> : null}
         </div>
       </Container>
     </header>

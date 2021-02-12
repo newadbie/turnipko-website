@@ -1,16 +1,19 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Link } from 'gatsby'
+
+import { NavItemProps } from '../../../types'
 
 import classes from './items.module.css'
 
-export interface AppBarProps {
-  to: string
-  text: string
-}
+const Item: FC<NavItemProps> = ({ to, text, action }) => {
+  const actionHandler = () => {
+    if (action) {
+      action()
+    }
+  }
 
-const Item: FC<AppBarProps> = ({ to, text }) => {
   return (
-    <Link activeClassName={classes.active} className={classes.Link} to={to}>
+    <Link activeClassName={classes.active} className={classes.Link} to={to} onClick={() => actionHandler()}>
       {text}
     </Link>
   )
