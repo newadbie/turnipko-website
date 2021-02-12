@@ -1,30 +1,40 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import Img, { FixedObject } from 'gatsby-image'
 
-import classes from './logo.module.css'
+type QueryType = {
+  strapiSiteSettings: {
+    logo: {
+      localFile: {
+        childImageSharp: {
+          fixed: FixedObject
+        }
+      }
+    }
+  }
+}
 
 const Logo: FC = () => {
-  const data = useStaticQuery(graphql`
+  const data: QueryType = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "logo.png" }) {
-        childImageSharp {
-          fixed(width: 70, height: 70) {
-            ...GatsbyImageSharpFixed
+      strapiSiteSettings {
+        logo {
+          localFile {
+            childImageSharp {
+              fixed(width: 70, height: 70) {
+                ...GatsbyImageSharpFixed
+              }
+            }
           }
         }
       }
     }
   `)
 
-  if (!data?.placeholderImage?.childImageSharp?.fixed) {
-    return <p>Not found</p>
-  }
-
   return (
     <a href="#" style={{ margin: 0, padding: 0, display: 'block' }}>
-      <Img fixed={data.placeholderImage.childImageSharp.fixed} className={classes.Logo} />
+      <Img fixed={data.strapiSiteSettings.logo.localFile.childImageSharp.fixed} />
     </a>
   )
 }

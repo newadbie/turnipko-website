@@ -79,6 +79,7 @@ export type CategoryProps = {
     localFile: {
       childImageSharp: {
         fixed: FixedObject
+        fluid: FluidObject
       }
     }
   }
