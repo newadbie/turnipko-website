@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect } from 'react'
-import { Link } from 'gatsby'
 
 import MenuIcon from '@material-ui/icons/Menu'
 import { Container, Drawer, IconButton, List, ListItem, ListItemText, Toolbar } from '@material-ui/core'
@@ -8,6 +7,7 @@ import AppBar from '@material-ui/core/AppBar'
 import classes from '../appBar.module.css'
 import Logo from '../Logo'
 
+import { RedirectLink } from '../../../../utils'
 import { navItems } from '../../../../data'
 
 const MobileAppBar: FC = () => {
@@ -28,14 +28,14 @@ const MobileAppBar: FC = () => {
   }, [])
 
   const list = (
-    <div role="presentation" style={{ width: 'auto' }}>
+    <div style={{ width: 'auto' }}>
       <List>
         {navItems.map(item => (
-          <Link key={item.text} to={item.to}>
+          <RedirectLink key={item.text} to={item.to}>
             <ListItem button onClick={() => setDrawerState(false)}>
               <ListItemText primary={item.text} className={classes.MText} />
             </ListItem>
-          </Link>
+          </RedirectLink>
         ))}
       </List>
     </div>

@@ -22,7 +22,7 @@ module.exports = {
       resolve: 'gatsby-source-strapi',
       options: {
         apiURL: `${process.env.GATSBY_API_URL}`,
-        singleTypes: ['portfolio', 'about', 'gallery', 'pricing', 'contact', 'site-settings'],
+        singleTypes: ['portfolio', 'about', 'gallery', 'pricing', 'contact', 'settings'],
         contentTypes: ['album', 'category'],
         queryLimit: 1000
       }

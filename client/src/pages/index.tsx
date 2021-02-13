@@ -7,6 +7,8 @@ import Latest from '../components/Portfolio/latest'
 import About from '../components/Portfolio/about'
 import Contact from '../components/Portfolio/contact/contact'
 
+import scrollTo from 'gatsby-plugin-smoothscroll'
+
 import { PortfolioPageProps, AboutPageProps } from '../types'
 
 interface QueryProps {
@@ -17,6 +19,19 @@ interface QueryProps {
 }
 
 const IndexPage: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
+  if (location.hash) {
+    setTimeout(function() {
+      window.scrollTo(0, 0)
+      if (location.hash === '#contact') {
+        setTimeout(() => {
+          {
+            scrollTo(`#contact`)
+          }
+        }, 1)
+      }
+    }, 1)
+  }
+
   return (
     <IndexLayout>
       <Header
@@ -36,7 +51,7 @@ const IndexPage: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
   )
 }
 
-export default React.memo(IndexPage)
+export default IndexPage
 
 export const PageQuery = graphql`
   query {

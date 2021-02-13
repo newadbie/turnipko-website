@@ -53,23 +53,37 @@
 }
 
 @media (max-width: 768px) {
-  .CommonBanner {
-    height: 301px;
-  }
-
-  .Background {
-    height: 301px;
-  }
-
-  .BackgroundImage {
-    height: 301px;
-  }
-
-  .Background::after {
-    height: 301px;
-  }
-
+  .Background,
+  .CommonBanner,
+  .BackgroundImage,
+  .Background::after,
   .Content {
     height: 301px;
+  }
+
+  .Content h1 {
+    font-size: 64px;
+  }
+
+  .Content h2 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .Background,
+  .CommonBanner,
+  .BackgroundImage,
+  .Background::after,
+  .Content {
+    height: 200px;
+  }
+
+  .Content h1 {
+    font-size: 40px;
+  }
+
+  .Content h2 {
+    font-size: 16px;
   }
 }

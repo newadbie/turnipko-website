@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Img, { FixedObject } from 'gatsby-image'
 
 type QueryType = {
-  strapiSiteSettings: {
+  strapiSettings: {
     logo: {
       localFile: {
         childImageSharp: {
@@ -18,7 +18,7 @@ type QueryType = {
 const Logo: FC = () => {
   const data: QueryType = useStaticQuery(graphql`
     query {
-      strapiSiteSettings {
+      strapiSettings {
         logo {
           localFile {
             childImageSharp {
@@ -34,7 +34,7 @@ const Logo: FC = () => {
 
   return (
     <a href="#" style={{ margin: 0, padding: 0, display: 'block' }}>
-      <Img fixed={data.strapiSiteSettings.logo.localFile.childImageSharp.fixed} />
+      <Img fixed={data.strapiSettings.logo.localFile.childImageSharp.fixed} />
     </a>
   )
 }
