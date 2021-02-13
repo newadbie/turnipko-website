@@ -19,7 +19,7 @@ interface QueryProps {
 }
 
 const IndexPage: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
-  if (location.hash) {
+  if (window !== undefined && location !== undefined && location.hash) {
     setTimeout(function() {
       window.scrollTo(0, 0)
       if (location.hash === '#contact') {
