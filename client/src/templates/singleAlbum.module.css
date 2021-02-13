@@ -1,4 +1,15 @@
 .SingleAlbum {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+  .SingleAlbum {
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .SingleAlbum {
+    padding: 20px 0;
+  }
 }

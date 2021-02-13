@@ -41,6 +41,53 @@
   padding-right: 0;
 }
 
+.Avatar {
+  display: flex;
+  justify-content: center;
+}
+
 .Avatar img {
   border-radius: 100%;
+}
+
+@media (max-width: 768px) {
+  .About {
+    padding: 40px 0;
+  }
+  .FirstRow .Text {
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .Wrapper {
+    width: auto;
+  }
+
+  .Wrapper .FirstRow {
+    height: auto;
+    flex-direction: column-reverse;
+    margin-bottom: 20px;
+  }
+
+  .About {
+    padding: 20px 0;
+  }
+
+  .FirstRow .Avatar {
+    width: 100%;
+    padding-bottom: 30px;
+  }
+
+  .FirstRow .Text {
+    width: 100%;
+  }
+
+  .FirstRow .Text p {
+    text-align: center;
+  }
+
+  .About p {
+    margin-bottom: 20px;
+  }
 }
