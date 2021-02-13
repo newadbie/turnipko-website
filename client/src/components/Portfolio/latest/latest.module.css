@@ -66,13 +66,19 @@
 @media (max-width: 600px) {
   .Container {
     padding: 20px 0 !important;
+    margin: 0;
   }
 
   .Header {
-    padding-bottom: 30px;
+    padding: 20px 0 0 0;
   }
 
   .Header h1 {
+    font-size: 32px;
+  }
+
+  .Section h2,
+  .Section h3 {
     font-size: 32px;
   }
 }

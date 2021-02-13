@@ -7,6 +7,8 @@ import Baner from './baner'
 import { Container } from '@material-ui/core'
 import SlideButton from '../../common/slideButton'
 
+import scrollTo from 'gatsby-plugin-smoothscroll'
+
 import classes from './header.module.css'
 
 interface Props {

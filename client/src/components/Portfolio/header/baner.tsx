@@ -11,7 +11,7 @@ interface Props {
 const Baner: FC<Props> = ({ fluidObject }) => {
   return (
     <div className={classes.Baner}>
-      <Img fluid={fluidObject} style={{ minHeight: '400px' }} objectPosition="70% 50%" className={classes.BanerBackground} />
+      <Img fluid={fluidObject} objectPosition="70% 50%" className={classes.BanerBackground} />
     </div>
   )
 }

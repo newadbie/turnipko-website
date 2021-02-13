@@ -9,6 +9,10 @@
   left: 0;
 }
 
+.BanerBackground {
+  min-height: 400px;
+}
+
 .Baner::after {
   content: '';
   display: block;
@@ -53,11 +57,30 @@
     height: 301px;
   }
 
+  .BanerBackground {
+    min-height: 301px;
+  }
+
   .Title {
     font-size: 64px;
   }
 
   .Text {
     margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .Header,
+  .Baner::after {
+    height: 200px;
+  }
+
+  .BanerBackground {
+    min-height: 200px;
+  }
+
+  .Title {
+    font-size: 40px;
   }
 }
