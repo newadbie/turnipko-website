@@ -19,17 +19,19 @@ interface QueryProps {
 }
 
 const IndexPage: FC<PageProps & QueryProps> = ({ data }: QueryProps) => {
-  if (typeof window !== undefined && location !== undefined && location.hash) {
-    setTimeout(function() {
-      window.scrollTo(0, 0)
-      if (location.hash === '#contact') {
-        setTimeout(() => {
-          {
-            scrollTo(`#contact`)
-          }
-        }, 1)
-      }
-    }, 1)
+  if (typeof window !== undefined) {
+    if (location !== undefined && location.hash) {
+      setTimeout(function() {
+        window.scrollTo(0, 0)
+        if (window.location.hash === '#contact') {
+          setTimeout(() => {
+            {
+              scrollTo(`#contact`)
+            }
+          }, 1)
+        }
+      }, 1)
+    }
   }
 
   return (
