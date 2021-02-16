@@ -1,17 +1,37 @@
 import { FC } from 'react'
+import { Link } from 'gatsby'
 
 import { NavItemProps } from '../../../../types'
 
-import classes from './items.module.css'
+import classes from '../appBar.module.css'
 
-import { RedirectLink } from '../../../../utils'
+const Item: FC<NavItemProps> = ({ to, text, action, partiallyActive }) => {
+  const actionHandler = () => {
+    if (action) {
+      action()
+    }
+  }
 
-const Item: FC<NavItemProps> = ({ to, text, action }) => {
-  return (
-    <RedirectLink activeClassName={classes.active} className={classes.Link} to={to} action={action}>
-      {text}
-    </RedirectLink>
-  )
+
+  if (process.env.GATSBY_HOMEURL && to.includes(process.env.GATSBY_HOMEURL)) {
+    return (
+      <a href={to} className={classes.Link}>
+        {text}
+      </a>
+    )
+  } else {
+    return (
+      <Link
+        to={to}
+        partiallyActive={partiallyActive}
+        activeClassName={classes.active}
+        className={classes.Link}
+        onClick={() => actionHandler()}
+      >
+        {text}
+      </Link>
+    )
+  }
 }
 
 export default Item

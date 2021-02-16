@@ -7,8 +7,8 @@ import AppBar from '@material-ui/core/AppBar'
 import classes from '../appBar.module.css'
 import Logo from '../Logo'
 
-import { RedirectLink } from '../../../../utils'
 import { navItems } from '../../../../data'
+import { RedirectLink } from '../../../../utils'
 
 const MobileAppBar: FC = () => {
   const [isDrawerOpen, setDrawerState] = useState<boolean>(false)
@@ -31,7 +31,7 @@ const MobileAppBar: FC = () => {
     <div style={{ width: 'auto' }}>
       <List>
         {navItems.map(item => (
-          <RedirectLink key={item.text} to={item.to}>
+          <RedirectLink activeClassName={classes.active} key={item.text} to={item.to} partiallyActive={item.partiallyActive}>
             <ListItem button onClick={() => setDrawerState(false)}>
               <ListItemText primary={item.text} className={classes.MText} />
             </ListItem>

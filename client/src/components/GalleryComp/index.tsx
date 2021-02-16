@@ -51,7 +51,7 @@ const GalleryComp: FC = () => {
 
   const categoryImgs = allCategories.map((category, index) => (
     <Grid key={index} item xs={12} sm={6} md={4} className={classes.Category}>
-      <Link to={`/gallery/${category.name.replace(/\s+/g, '-')}`}>
+      <Link to={`/gallery/${category.name.replace(/\s+/g, '-')}/`}>
         <Img fixed={category.photo.localFile.childImageSharp.fixed} className={classes.Item} style={{ width: '100%' }} />
         <div className={classes.TextContainer}>
           <span>{category.name}</span>

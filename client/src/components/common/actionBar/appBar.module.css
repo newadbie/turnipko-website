@@ -2,6 +2,9 @@
   height: 120px;
   display: block;
   position: relative;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .AppBar {
@@ -24,16 +27,40 @@
   display: none !important;
 }
 
+.Link {
+  font-size: 16px;
+  color: #222;
+  margin-right: 80px;
+  line-height: 20px;
+  text-decoration: none;
+}
+.Link:last-child {
+  margin-right: 0;
+}
+
+.Link.active {
+  color: #f0d8e6;
+  font-weight: bold;
+}
+
+.Link:hover {
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
   .AppBar,
   .Wrapper {
     height: 80px;
   }
+
+  .Link {
+    margin-right: 20px;
+  }
+  .MText {
+    text-align: center;
+  }
 }
 
-.MText {
-  text-align: center;
-}
 
 @media (max-width: 600px) {
   .Desktop {

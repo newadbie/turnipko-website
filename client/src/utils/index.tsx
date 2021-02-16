@@ -5,10 +5,11 @@ type RedirectProps = {
   to: string
   activeClassName?: string
   className?: string
+  partiallyActive?: boolean
   action?: () => void
 }
 
-export const RedirectLink: FC<RedirectProps> = ({ children, to, activeClassName, className, action }) => {
+export const RedirectLink: FC<RedirectProps> = ({ children, to, activeClassName, partiallyActive, className, action }) => {
   const actionHandler = () => {
     if (action) {
       action()
@@ -23,7 +24,13 @@ export const RedirectLink: FC<RedirectProps> = ({ children, to, activeClassName,
     )
   } else {
     return (
-      <Link to={to} activeClassName={activeClassName} className={className} onClick={() => actionHandler()}>
+      <Link
+        to={to}
+        partiallyActive={partiallyActive}
+        activeClassName={activeClassName}
+        className={className}
+        onClick={() => actionHandler()}
+      >
         {children}
       </Link>
     )
