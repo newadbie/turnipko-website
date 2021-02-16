@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { Link } from 'gatsby'
 
+import { StrapiAlbumProps, PhotoType } from '../types'
+
 type RedirectProps = {
   to: string
   activeClassName?: string
@@ -35,4 +37,21 @@ export const RedirectLink: FC<RedirectProps> = ({ children, to, activeClassName,
       </Link>
     )
   }
+}
+
+export const GetPhotoTypesFromGallery = (gallery: Array<StrapiAlbumProps>): Array<{ small: PhotoType; large: PhotoType }> => {
+  return gallery.map(photo => ({
+    small: {
+      width: photo.localFile.childImageSharp.small.width,
+      height: photo.localFile.childImageSharp.small.height,
+      src: photo.localFile.childImageSharp.small.srcWebp,
+      alt: photo.alt
+    },
+    large: {
+      width: photo.localFile.childImageSharp.large.width,
+      height: photo.localFile.childImageSharp.large.height,
+      src: photo.localFile.childImageSharp.large.srcWebp,
+      alt: photo.alt
+    }
+  }))
 }

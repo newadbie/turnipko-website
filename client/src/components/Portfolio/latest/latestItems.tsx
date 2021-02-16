@@ -1,40 +1,25 @@
 import React, { FC, useState, useCallback } from 'react'
-import { Container } from '@material-ui/core'
-
 import { useStaticQuery, graphql } from 'gatsby'
+
 import Gallery from 'react-photo-gallery'
 import Carousel, { ModalGateway, Modal } from 'react-images'
 
+import { StrapiAlbumProps } from '../../../types'
+import { GetPhotoTypesFromGallery } from '../../../utils'
+import { Container } from '@material-ui/core'
+
 import classes from './latest.module.css'
 
-type PhotoType = {
-  src: string
-  height: number
-  width: number
-}
-
-type StaticQueryType = {
-  allStrapiAlbum: {
-    nodes: [
-      {
-        id: string
-        title: string
-        createdAt: string
-        photos: [
-          {
-            url: string
-            height: number
-            width: number
-          }
-        ]
-      }
-    ]
+interface StaticQueryType {
+  strapiAlbum: {
+    photos: Array<StrapiAlbumProps>
   }
 }
 
 const LatestItems: FC = () => {
   const [currentImage, setCurrentImage] = useState<number>(0)
   const [viewerIsOpen, setViewerIsOpen] = useState<boolean>(false)
+
   // @ts-ignore
   const openLightBox = useCallback((_, { photo, index }: { photo: any; index: number }) => {
     setCurrentImage(index)
@@ -47,38 +32,41 @@ const LatestItems: FC = () => {
 
   const query = graphql`
     {
-      allStrapiAlbum(sort: { fields: createdAt, order: DESC }, limit: 1) {
-        nodes {
-          id
-          title
-          createdAt
-          photos {
-            url
-            height
-            width
+      strapiAlbum {
+        photos {
+          alternativeText
+          localFile {
+            childImageSharp {
+              small: fixed(width: 800) {
+                width
+                height
+                srcWebp
+              }
+              large: fixed(width: 1980) {
+                width
+                height
+                srcWebp
+              }
+            }
           }
         }
       }
     }
   `
   const data: StaticQueryType = useStaticQuery(query)
-
-  const allPhotos: Array<PhotoType> = data.allStrapiAlbum.nodes[0].photos
-    .map(photo => ({ src: `${process.env.GATSBY_API_URL}${photo.url}`, width: photo.width, height: photo.height }))
-    .reverse()
-    .slice(0, 3) // We catch reversed array because it is by default sorted by DESC, to show recent photos we have to reverse array right here!
+  const photosToGallery = GetPhotoTypesFromGallery(data.strapiAlbum.photos).slice(0,3);
 
   return (
     <Container className={classes.Container}>
-      <Gallery photos={allPhotos} onClick={openLightBox} />
+      <Gallery photos={photosToGallery.map(photo => photo.small)} onClick={openLightBox} />
       <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeLightBox}>
             <Carousel
               currentIndex={currentImage}
-              views={allPhotos.map(photo => ({
-                ...photo,
-                source: photo.src
+              views={photosToGallery.map(photo => ({
+                ...photo.large,
+                source: photo.large.src
               }))}
             />
           </Modal>

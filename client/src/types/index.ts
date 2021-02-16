@@ -85,17 +85,28 @@ export type CategoryProps = {
   }
 }
 
-export type SingleAlbumProps = {
-  node: {
-    category: CategoryProps
-    photos: [
-      {
-        url: string
+// For react-gallery library
+export type StrapiAlbumProps = {
+  alt: string
+  localFile: {
+    childImageSharp: {
+      small: {
         width: number
         height: number
+        srcWebp: string
       }
-    ]
+      large: {
+        width: number
+        height: number
+        srcWebp: string
+      }
+    }
   }
+}
+
+export type SingleAlbumProps = {
+  category: CategoryProps
+  photos: Array<StrapiAlbumProps>
 }
 
 export type PhotoType = {
@@ -111,5 +122,6 @@ export type PhotoType = {
 export type NavItemProps = {
   text: string
   to: string
+  partiallyActive?: boolean
   action?: () => void
 }
