@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import { Container } from '@material-ui/core'
 import Gallery from 'react-photo-gallery'
 import Carousel, { Modal, ModalGateway } from 'react-images'
@@ -34,11 +34,8 @@ const SingleAlbum = ({ data }: QueryType) => {
   }
 
   if (categoryData === undefined) {
-    return (
-      <Container>
-        <h1>Not found</h1>
-      </Container>
-    )
+    navigate("/404");
+    return null;
   }
 
   const photosToGallery = GetPhotoTypesFromGallery(data.allStrapiAlbum.nodes[0].photos)
