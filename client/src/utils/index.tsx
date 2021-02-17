@@ -1,30 +1,45 @@
 import { FC } from 'react'
-import { Link } from 'gatsby'
+import { Link, withPrefix } from 'gatsby'
 
 import { StrapiAlbumProps, PhotoType } from '../types'
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
 type RedirectProps = {
   to: string
   activeClassName?: string
   className?: string
+  isSmooth?: boolean
   partiallyActive?: boolean
   action?: () => void
 }
 
-export const RedirectLink: FC<RedirectProps> = ({ children, to, activeClassName, partiallyActive, className, action }) => {
+export const isHomePage = (): Boolean => {
+  return typeof window !== 'undefined' && window.location.pathname === withPrefix('/')
+}
+
+export const RedirectLink: FC<RedirectProps> = ({ children, to, activeClassName, partiallyActive, className, action, isSmooth }) => {
   const actionHandler = () => {
     if (action) {
       action()
     }
   }
-  // return <a href={to}>{children}</a>
-  if (process.env.GATSBY_HOMEURL && to.includes(process.env.GATSBY_HOMEURL)) {
+  
+  if (isHomePage() && isSmooth === true) {
     return (
-      <a href={to} className={className}>
+      <a
+        className={className}
+        style={{ cursor: 'pointer' }}
+        onClick={() => {
+          setTimeout(() => {
+            scrollTo("#contact");
+          }, 300)
+        }}
+      >
         {children}
       </a>
     )
-  } else {
+  }
+
     return (
       <Link
         to={to}
@@ -36,7 +51,7 @@ export const RedirectLink: FC<RedirectProps> = ({ children, to, activeClassName,
         {children}
       </Link>
     )
-  }
+  
 }
 
 export const GetPhotoTypesFromGallery = (gallery: Array<StrapiAlbumProps>): Array<{ small: PhotoType; large: PhotoType }> => {

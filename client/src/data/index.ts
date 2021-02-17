@@ -7,6 +7,7 @@ export const navItems: Array<NavItemProps> = [
   { text: 'Pricing', to: '/pricing/' },
   {
     text: 'Contact',
-    to: process.env.GATSBY_HOMEURL + '/#contact' ?? 'http://localhost:8000'
+    to: '/#contact',
+    isSmooth: true
   }
 ]

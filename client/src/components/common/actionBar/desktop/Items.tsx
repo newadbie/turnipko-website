@@ -9,7 +9,7 @@ const Items: FC = () => {
   return (
     <div className={classes.Wrapper}>
       {navItems.map(item => (
-        <Item partiallyActive={item.partiallyActive} to={item.to} key={item.to} text={item.text} />
+        <Item {...item} key={item.to} />
       ))}
     </div>
   )

@@ -31,7 +31,7 @@ const MobileAppBar: FC = () => {
     <div style={{ width: 'auto' }}>
       <List>
         {navItems.map(item => (
-          <RedirectLink activeClassName={classes.active} key={item.text} to={item.to} partiallyActive={item.partiallyActive}>
+          <RedirectLink isSmooth={item.isSmooth} activeClassName={classes.active} key={item.text} to={item.to} partiallyActive={item.partiallyActive}>
             <ListItem button onClick={() => setDrawerState(false)}>
               <ListItemText primary={item.text} className={classes.MText} />
             </ListItem>

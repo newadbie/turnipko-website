@@ -122,6 +122,7 @@ export type PhotoType = {
 export type NavItemProps = {
   text: string
   to: string
+  isSmooth?: boolean
   partiallyActive?: boolean
   action?: () => void
 }
